@@ -34,6 +34,7 @@ import ChallengeList from '../features/challenges/pages/ChallengeList'
 import ChallengeDetail from '../features/challenges/pages/ChallengeDetail'
 import Timeline from '../features/activity/pages/Timeline'
 import Achievements from '../features/achievements/pages/Achievements'
+import Subscription from '../features/subscription/pages/Subscription'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
@@ -99,7 +100,10 @@ export default function AppRouter() {
             {/* Logros */}
             <Route path={ROUTES.ACHIEVEMENTS} element={<Achievements />} />
 
-            {/* TODO: agregar las páginas de las demás features (avatar, suscripción...) */}
+            {/* Suscripción */}
+            <Route path={ROUTES.SUBSCRIPTION} element={<Subscription />} />
+
+            {/* TODO: agregar las páginas de las demás features (wrapped, avatar...) */}
           </Route>
 
           <Route element={<AdminRoute />}>

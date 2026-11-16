@@ -9,6 +9,8 @@ import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Loader from '../../../../components/common/Loader'
 import Tabs from '../../../../components/common/Tabs'
 import InvitationItem from '../../components/InvitationItem'
+import PlanLimitNotice from '../../../subscription/components/PlanLimitNotice'
+import { isPlanLimitError } from '../../../subscription/constants'
 import '../../components/StreakPage.css'
 
 const TABS = [
@@ -24,10 +26,12 @@ export default function Invitations() {
   )
   const [busyId, setBusyId] = useState(null)
   const [actionError, setActionError] = useState('')
+  const [planLimit, setPlanLimit] = useState(null)
 
   const act = async (invitation, action) => {
     setBusyId(invitation.id)
     setActionError('')
+    setPlanLimit(null)
     try {
       if (action === 'cancel') {
         await streakService.cancelInvitation(invitation.id)
@@ -37,7 +41,8 @@ export default function Invitations() {
         setData(invitations.map((i) => (i.id === invitation.id ? updated : i)))
       }
     } catch (err) {
-      setActionError(getErrorMessage(err, 'No se pudo completar la acción'))
+      if (isPlanLimitError(err)) setPlanLimit(err.response.data.details.limit)
+      else setActionError(getErrorMessage(err, 'No se pudo completar la acción'))
     } finally {
       setBusyId(null)
     }
@@ -57,6 +62,7 @@ export default function Invitations() {
 
       <Tabs tabs={TABS} value={box} onChange={setBox} />
       <ErrorMessage message={actionError} />
+      {planLimit && <PlanLimitNotice limit={planLimit} />}
 
       {loading ? (
         <Loader />

@@ -8,6 +8,8 @@ import Loader from '../../../../components/common/Loader'
 import EmptyState from '../../../../components/common/EmptyState'
 import ErrorMessage from '../../../../components/common/ErrorMessage'
 import MutualCard from '../MutualCard'
+import PlanLimitNotice from '../../../subscription/components/PlanLimitNotice'
+import { isPlanLimitError } from '../../../subscription/constants'
 import './MutualGrid.css'
 
 // Grid de mutuals con su racha. El backend ya los manda ordenados (primero los que vencen hoy).
@@ -15,15 +17,18 @@ export default function MutualGrid() {
   const { data: mutuals, loading, error, run: reload, setData } = useMutuals()
   const [invitingId, setInvitingId] = useState(null)
   const [actionError, setActionError] = useState('')
+  const [planLimit, setPlanLimit] = useState(null)
 
   const onInvite = async (friend) => {
     setInvitingId(friend.id)
     setActionError('')
+    setPlanLimit(null)
     try {
       await streakService.invite(friend.id)
       setData(mutuals.map((m) => (m.friend.id === friend.id ? { ...m, invitationPending: true } : m)))
     } catch (err) {
-      setActionError(getErrorMessage(err, 'No se pudo enviar la invitación'))
+      if (isPlanLimitError(err)) setPlanLimit(err.response.data.details.limit)
+      else setActionError(getErrorMessage(err, 'No se pudo enviar la invitación'))
     } finally {
       setInvitingId(null)
     }
@@ -44,6 +49,7 @@ export default function MutualGrid() {
   return (
     <div className="mutual-grid__wrapper">
       <ErrorMessage message={actionError} />
+      {planLimit && <PlanLimitNotice limit={planLimit} />}
       <div className="mutual-grid">
         {mutuals.map((mutual) => (
           <MutualCard
