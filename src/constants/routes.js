@@ -23,6 +23,7 @@ export const ROUTES = {
   STREAKS_CHECK_IN: '/streaks/check-in',
   STREAKS_HISTORY: '/streaks/history',
   CHALLENGES: '/challenges',
+  CHALLENGE_DETAIL: '/challenges/:challengeId',
   ACHIEVEMENTS: '/achievements',
   TIMELINE: '/timeline',
   WALLET: '/wallet',
@@ -45,3 +46,4 @@ export const profilePath = (username) => `/u/${encodeURIComponent(username)}`
 export const followersPath = (username) => `${profilePath(username)}/followers`
 export const followingPath = (username) => `${profilePath(username)}/following`
 export const streakPath = (streakId) => `/streaks/${streakId}`
+export const challengePath = (challengeId) => `/challenges/${challengeId}`

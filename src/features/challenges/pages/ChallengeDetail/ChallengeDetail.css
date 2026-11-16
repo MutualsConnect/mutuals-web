@@ -1,0 +1,5 @@
+.challenge-detail__hero { display: flex; flex-direction: column; gap: 12px; padding: 24px 20px; }
+.challenge-detail__friend { display: inline-flex; align-items: center; gap: 10px; color: var(--color-text-muted); text-decoration: none; align-self: flex-start; }
+.challenge-detail__prompt { margin: 0; font-size: 1.1rem; white-space: pre-line; }
+.challenge-detail__week { font-size: 0.8rem; color: var(--color-text-muted); }
+.challenge-detail__submissions { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }

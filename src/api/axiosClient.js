@@ -4,9 +4,10 @@ import { tokenStorage } from '../utils/storage'
 
 export const AUTH_LOGOUT_EVENT = 'auth:logout'
 
+// Sin Content-Type fijo: axios pone application/json al mandar objetos y,
+// con FormData (subida de fotos), deja que el navegador ponga multipart/form-data.
 const axiosClient = axios.create({
   baseURL: env.apiUrl,
-  headers: { 'Content-Type': 'application/json' },
 })
 
 // Agrega el access token a cada petición

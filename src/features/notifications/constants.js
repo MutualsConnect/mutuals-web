@@ -1,4 +1,4 @@
-import { ROUTES, streakPath } from '../../constants/routes'
+import { ROUTES, challengePath, streakPath } from '../../constants/routes'
 
 export const UNREAD_POLL_MS = 60_000
 
@@ -44,7 +44,7 @@ export function getNotificationLink({ type, referenceType, referenceId }) {
     case 'STREAK_INVITATION':
       return ROUTES.STREAKS_INVITATIONS
     case 'CHALLENGE':
-      return referenceId ? `${ROUTES.CHALLENGES}/${referenceId}` : ROUTES.CHALLENGES
+      return referenceId ? challengePath(referenceId) : ROUTES.CHALLENGES
     case 'ACTIVITY':
       return ROUTES.TIMELINE
     case 'WRAPPED':

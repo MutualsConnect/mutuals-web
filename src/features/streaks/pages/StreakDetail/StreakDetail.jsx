@@ -16,6 +16,7 @@ import Loader from '../../../../components/common/Loader'
 import Modal from '../../../../components/common/Modal'
 import StreakFlame from '../../components/StreakFlame'
 import RegisterInteractionModal from '../../components/RegisterInteractionModal'
+import FriendChallenge from '../../../challenges/components/FriendChallenge'
 import '../../components/StreakPage.css'
 import './StreakDetail.css'
 
@@ -106,6 +107,8 @@ export default function StreakDetail() {
           )}
         </div>
       )}
+
+      {isActive && <FriendChallenge friendId={streak.friend.id} />}
 
       <Card>
         <dl className="streak-detail__stats">

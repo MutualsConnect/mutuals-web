@@ -1,0 +1,8 @@
+.challenge-page { display: flex; flex-direction: column; gap: 20px; max-width: 720px; width: 100%; margin: 0 auto; }
+.challenge-page__back { font-size: 0.9rem; text-decoration: none; }
+.challenge-page__title { margin: 0; font-size: 1.5rem; }
+.challenge-page__subtitle { margin: 4px 0 0; color: var(--color-text-muted); }
+.challenge-page__section { display: flex; flex-direction: column; gap: 10px; }
+.challenge-page__section-title { margin: 0; font-size: 1rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.challenge-page__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.challenge-page__notice { margin: 0; padding: 10px 14px; border-radius: var(--radius-md); background: var(--color-success-soft); color: var(--color-success); }

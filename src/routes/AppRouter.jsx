@@ -30,6 +30,8 @@ import Transactions from '../features/wallet/pages/Transactions'
 import Shields from '../features/wallet/pages/Shields'
 import Notifications from '../features/notifications/pages/Notifications'
 import UserRedirect from '../features/user/pages/UserRedirect'
+import ChallengeList from '../features/challenges/pages/ChallengeList'
+import ChallengeDetail from '../features/challenges/pages/ChallengeDetail'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
@@ -85,7 +87,11 @@ export default function AppRouter() {
             <Route path={ROUTES.WALLET_TRANSACTIONS} element={<Transactions />} />
             <Route path={ROUTES.WALLET_SHIELDS} element={<Shields />} />
 
-            {/* TODO: agregar las páginas de las demás features (retos, actividad...) */}
+            {/* Desafíos */}
+            <Route path={ROUTES.CHALLENGES} element={<ChallengeList />} />
+            <Route path={ROUTES.CHALLENGE_DETAIL} element={<ChallengeDetail />} />
+
+            {/* TODO: agregar las páginas de las demás features (actividad, logros...) */}
           </Route>
 
           <Route element={<AdminRoute />}>

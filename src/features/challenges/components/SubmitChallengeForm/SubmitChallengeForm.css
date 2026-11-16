@@ -1,0 +1,6 @@
+.submit-challenge { display: flex; flex-direction: column; gap: 12px; }
+.submit-challenge__title { margin: 0; font-size: 1.1rem; }
+.submit-challenge__notice { margin: 0; padding: 10px 14px; border-radius: var(--radius-md); background: var(--color-warning-soft); color: var(--color-warning); }
+.submit-challenge__hint { margin: 0; font-size: 0.8rem; color: var(--color-text-muted); }
+.submit-challenge__preview { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.submit-challenge__preview img { width: 100%; max-height: 320px; object-fit: cover; border-radius: var(--radius-md); }
