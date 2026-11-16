@@ -6,6 +6,10 @@ import AdminRoute from './AdminRoute'
 import MainLayout from '../layouts/MainLayout'
 import AuthLayout from '../layouts/AuthLayout'
 import AdminLayout from '../layouts/AdminLayout'
+import Login from '../features/auth/pages/Login'
+import Register from '../features/auth/pages/Register'
+import ForgotPassword from '../features/auth/pages/ForgotPassword'
+import ResetPassword from '../features/auth/pages/ResetPassword'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
@@ -13,13 +17,16 @@ export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rutas públicas (sin sesión) */}
-        <Route element={<PublicRoute />}>
-          <Route element={<AuthLayout />}>
-            {/* TODO: agregar las páginas de features/auth, por ejemplo:
-                <Route path={ROUTES.LOGIN} element={<Login />} />
-                <Route path={ROUTES.REGISTER} element={<Register />} /> */}
+        <Route element={<AuthLayout />}>
+          {/* Solo sin sesión: si ya hay sesión, redirige al inicio */}
+          <Route element={<PublicRoute />}>
+            <Route path={ROUTES.LOGIN} element={<Login />} />
+            <Route path={ROUTES.REGISTER} element={<Register />} />
           </Route>
+
+          {/* Accesibles siempre (el enlace del correo puede abrirse con sesión iniciada) */}
+          <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPassword />} />
+          <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
         </Route>
 
         {/* Rutas privadas (con sesión) */}

@@ -1,0 +1,11 @@
+.auth-form { display: flex; flex-direction: column; gap: 16px; }
+.auth-form__title { margin: 0; font-size: 1.375rem; }
+.auth-form__subtitle { margin: -8px 0 0; color: var(--color-text-muted); }
+.auth-form__row { display: flex; justify-content: flex-end; margin-top: -8px; font-size: 0.875rem; }
+.auth-form__footer { margin: 8px 0 0; text-align: center; font-size: 0.9rem; color: var(--color-text-muted); }
+.auth-form__success {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-soft);
+  color: var(--color-text);
+}
