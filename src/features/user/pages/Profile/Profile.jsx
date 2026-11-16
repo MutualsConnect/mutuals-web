@@ -60,6 +60,9 @@ export default function Profile() {
             <Link to={ROUTES.EDIT_PROFILE} className="btn btn--primary btn--md">
               Editar perfil
             </Link>
+            <Link to={ROUTES.WRAPPED} className="btn btn--secondary btn--md">
+              🎁 Mi Wrapped
+            </Link>
             <Link to={ROUTES.SETTINGS} className="btn btn--secondary btn--md">
               Configuración
             </Link>

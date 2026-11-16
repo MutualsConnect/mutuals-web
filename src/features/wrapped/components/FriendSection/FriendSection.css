@@ -1,0 +1,14 @@
+.friend-section { display: flex; flex-direction: column; gap: 14px; }
+.friend-section__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.friend-section__who { display: flex; align-items: center; gap: 10px; color: var(--color-text); text-decoration: none; }
+.friend-section__who > span { display: flex; flex-direction: column; }
+.friend-section__since { font-size: 0.8rem; color: var(--color-text-muted); }
+.friend-section__stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.friend-section__stats > div { display: flex; flex-direction: column; align-items: center; padding: 10px 4px; border-radius: var(--radius-md); background: var(--color-surface-hover); }
+.friend-section__stats strong { font-size: 1.1rem; }
+.friend-section__stats span { font-size: 0.75rem; color: var(--color-text-muted); }
+.friend-section__methods { padding: 12px 14px; border-radius: var(--radius-md); background: linear-gradient(145deg, #2563eb, #06b6d4); color: #fff; }
+
+@media (max-width: 480px) {
+  .friend-section__stats { grid-template-columns: repeat(2, 1fr); }
+}

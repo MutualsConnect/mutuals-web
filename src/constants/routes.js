@@ -33,6 +33,8 @@ export const ROUTES = {
   NOTIFICATIONS: '/notifications',
   SUBSCRIPTION: '/subscription',
   WRAPPED: '/wrapped',
+  WRAPPED_ALL_TIME: '/wrapped/all-time',
+  WRAPPED_DETAIL: '/wrapped/:periodKey',
 
   ADMIN: '/admin',
   ADMIN_USERS: '/admin/users',
@@ -47,3 +49,5 @@ export const followersPath = (username) => `${profilePath(username)}/followers`
 export const followingPath = (username) => `${profilePath(username)}/following`
 export const streakPath = (streakId) => `/streaks/${streakId}`
 export const challengePath = (challengeId) => `/challenges/${challengeId}`
+export const wrappedPath = (periodKey, platform = false) =>
+  `/wrapped/${periodKey}${platform ? '?platform=1' : ''}`

@@ -40,6 +40,9 @@ import AdminUsers from '../features/admin/pages/Users'
 import AdminReports from '../features/admin/pages/Reports'
 import AdminChallengeTemplates from '../features/admin/pages/ChallengeTemplates'
 import AdminMetrics from '../features/admin/pages/Metrics'
+import WrappedHistory from '../features/wrapped/pages/WrappedHistory'
+import WrappedDetail from '../features/wrapped/pages/WrappedDetail'
+import AllTime from '../features/wrapped/pages/AllTime'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
@@ -108,7 +111,12 @@ export default function AppRouter() {
             {/* Suscripción */}
             <Route path={ROUTES.SUBSCRIPTION} element={<Subscription />} />
 
-            {/* TODO: agregar las páginas de las demás features (wrapped, avatar...) */}
+            {/* Wrapped */}
+            <Route path={ROUTES.WRAPPED} element={<WrappedHistory />} />
+            <Route path={ROUTES.WRAPPED_ALL_TIME} element={<AllTime />} />
+            <Route path={ROUTES.WRAPPED_DETAIL} element={<WrappedDetail />} />
+
+            {/* TODO: agregar las páginas de avatar */}
           </Route>
 
           <Route element={<AdminRoute />}>

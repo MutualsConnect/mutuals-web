@@ -1,0 +1,23 @@
+.wrapped-page { display: flex; flex-direction: column; gap: 18px; max-width: 560px; width: 100%; margin: 0 auto; }
+.wrapped-page__back { font-size: 0.9rem; text-decoration: none; }
+.wrapped-page__title { margin: 0; font-size: 1.5rem; }
+.wrapped-page__subtitle { margin: 4px 0 0; color: var(--color-text-muted); }
+.wrapped-page__section-title { margin: 0 0 10px; font-size: 1.1rem; }
+.wrapped-page__list { display: flex; flex-direction: column; gap: 10px; }
+.wrapped-page__actions { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.wrapped-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  color: #fff; text-decoration: none;
+  background: linear-gradient(135deg, #6d4aff, #a855f7);
+  transition: transform 0.15s;
+}
+.wrapped-item:hover { transform: translateY(-2px); }
+.wrapped-item--yearly { background: linear-gradient(135deg, #ff5a1f, #ec4899); }
+.wrapped-item--alltime { background: linear-gradient(135deg, #0d9488, #2563eb); }
+.wrapped-item--platform { background: linear-gradient(135deg, #1b1b25, #3b3b55); }
+.wrapped-item__icon { font-size: 2rem; }
+.wrapped-item__body { flex: 1; display: flex; flex-direction: column; }
+.wrapped-item__title { font-weight: 800; font-size: 1.1rem; }
+.wrapped-item__meta { font-size: 0.8rem; opacity: 0.9; }
