@@ -1,0 +1,10 @@
+.streak-activity { display: flex; flex-wrap: wrap; gap: 8px; }
+.streak-activity__item {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-weight: 600; font-size: 0.875rem;
+  text-decoration: none;
+}
+.streak-activity__item:hover { filter: brightness(0.97); }

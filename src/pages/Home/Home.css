@@ -1,0 +1,6 @@
+.home { display: flex; flex-direction: column; gap: 20px; }
+.home__header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.home__title { margin: 0; font-size: 1.5rem; }
+.home__subtitle { margin: 4px 0 0; color: var(--color-text-muted); }
+.home__section-header { display: flex; align-items: center; justify-content: space-between; }
+.home__section-title { margin: 0; font-size: 1.15rem; }

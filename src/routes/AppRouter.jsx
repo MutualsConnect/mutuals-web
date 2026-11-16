@@ -10,6 +10,12 @@ import Login from '../features/auth/pages/Login'
 import Register from '../features/auth/pages/Register'
 import ForgotPassword from '../features/auth/pages/ForgotPassword'
 import ResetPassword from '../features/auth/pages/ResetPassword'
+import StreakList from '../features/streaks/pages/StreakList'
+import StreakDetail from '../features/streaks/pages/StreakDetail'
+import StreakHistory from '../features/streaks/pages/StreakHistory'
+import Invitations from '../features/streaks/pages/Invitations'
+import PendingInteractions from '../features/streaks/pages/PendingInteractions'
+import CheckIn from '../features/streaks/pages/CheckIn'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
@@ -33,7 +39,16 @@ export default function AppRouter() {
         <Route element={<ProtectedRoute />}>
           <Route element={<MainLayout />}>
             <Route path={ROUTES.HOME} element={<Home />} />
-            {/* TODO: agregar las páginas de cada feature (perfil, rachas, retos...) */}
+
+            {/* Rachas */}
+            <Route path={ROUTES.STREAKS} element={<StreakList />} />
+            <Route path={ROUTES.STREAKS_INVITATIONS} element={<Invitations />} />
+            <Route path={ROUTES.STREAKS_PENDING} element={<PendingInteractions />} />
+            <Route path={ROUTES.STREAKS_CHECK_IN} element={<CheckIn />} />
+            <Route path={ROUTES.STREAKS_HISTORY} element={<StreakHistory />} />
+            <Route path={ROUTES.STREAK_DETAIL} element={<StreakDetail />} />
+
+            {/* TODO: agregar las páginas de las demás features (perfil, retos...) */}
           </Route>
 
           <Route element={<AdminRoute />}>

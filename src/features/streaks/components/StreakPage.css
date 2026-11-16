@@ -1,0 +1,9 @@
+/* Estilos compartidos por las páginas de rachas */
+.streak-page { display: flex; flex-direction: column; gap: 20px; }
+.streak-page__header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.streak-page__title { margin: 0; font-size: 1.5rem; }
+.streak-page__subtitle { margin: 4px 0 0; color: var(--color-text-muted); }
+.streak-page__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.streak-page__back { font-size: 0.9rem; text-decoration: none; }
+.streak-page__list { display: flex; flex-direction: column; gap: 10px; }
+.streak-page__section-title { margin: 0 0 8px; font-size: 1.05rem; }

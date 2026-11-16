@@ -1,0 +1,9 @@
+.check-in__success {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-lg);
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+.check-in__success > div { flex: 1; }
+.check-in__success-icon { font-size: 1.75rem; }

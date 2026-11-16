@@ -1,0 +1,3 @@
+.my-qr { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+.my-qr__code { padding: 12px; border-radius: var(--radius-lg); background: #fff; line-height: 0; }
+.my-qr__hint { margin: 0; max-width: 320px; color: var(--color-text-muted); font-size: 0.9rem; }
