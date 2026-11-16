@@ -32,6 +32,7 @@ import Notifications from '../features/notifications/pages/Notifications'
 import UserRedirect from '../features/user/pages/UserRedirect'
 import ChallengeList from '../features/challenges/pages/ChallengeList'
 import ChallengeDetail from '../features/challenges/pages/ChallengeDetail'
+import Timeline from '../features/activity/pages/Timeline'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
@@ -91,7 +92,10 @@ export default function AppRouter() {
             <Route path={ROUTES.CHALLENGES} element={<ChallengeList />} />
             <Route path={ROUTES.CHALLENGE_DETAIL} element={<ChallengeDetail />} />
 
-            {/* TODO: agregar las páginas de las demás features (actividad, logros...) */}
+            {/* Novedades */}
+            <Route path={ROUTES.TIMELINE} element={<Timeline />} />
+
+            {/* TODO: agregar las páginas de las demás features (logros, avatar...) */}
           </Route>
 
           <Route element={<AdminRoute />}>
