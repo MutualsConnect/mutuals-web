@@ -9,6 +9,10 @@ export const authService = {
   register: (payload) =>
     axiosClient.post('/auth/register', payload).then((r) => r.data),
 
+  // idToken = credential que entrega Google Identity Services
+  loginWithGoogle: (idToken) =>
+    axiosClient.post('/auth/google', { idToken }).then((r) => r.data),
+
   logout: (refreshToken) => axiosClient.post('/auth/logout', { refreshToken }),
 
   requestPasswordReset: (email) =>

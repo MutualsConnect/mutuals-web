@@ -1,0 +1,14 @@
+.google-auth { display: flex; flex-direction: column; gap: 14px; }
+.google-auth__divider { display: flex; align-items: center; gap: 12px; color: var(--ink-soft); font-size: 0.85rem; }
+.google-auth__divider::before, .google-auth__divider::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+.google-auth__button { display: flex; justify-content: center; min-height: 44px; }
+.google-auth__button--disabled { opacity: 0.5; pointer-events: none; }
+.google-auth__error { margin: 0; text-align: center; color: var(--danger); font-size: 0.85rem; }
+.google-auth__placeholder {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 44px; border: 1px solid var(--glass-border); border-radius: 999px;
+  background: #131314; color: #e3e3e3; font-weight: 600; cursor: not-allowed; opacity: 0.6;
+}
+.google-auth__g { font-weight: 900; color: #fff; }
+.google-auth__hint { margin: 0; text-align: center; color: var(--ink-soft); font-size: 0.8rem; }
+.google-auth__hint code { color: var(--peach); }

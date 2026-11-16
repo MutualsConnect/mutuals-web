@@ -42,6 +42,11 @@ export function AuthProvider({ children }) {
     [startSession],
   )
 
+  const loginWithGoogle = useCallback(
+    async (idToken) => startSession(await authService.loginWithGoogle(idToken)),
+    [startSession],
+  )
+
   const logout = useCallback(async () => {
     const refreshToken = tokenStorage.getRefreshToken()
     try {
@@ -72,12 +77,13 @@ export function AuthProvider({ children }) {
       isAdmin: Boolean(user?.roles?.includes(ROLES.ADMIN)),
       login,
       register,
+      loginWithGoogle,
       logout,
       clearSession,
       refreshUser,
       setUser,
     }),
-    [user, loading, login, register, logout, clearSession, refreshUser],
+    [user, loading, login, register, loginWithGoogle, logout, clearSession, refreshUser],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

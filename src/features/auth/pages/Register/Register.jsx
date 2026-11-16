@@ -14,12 +14,13 @@ import {
 import Button from '../../../../components/common/Button'
 import Input from '../../../../components/common/Input'
 import ErrorMessage from '../../../../components/common/ErrorMessage'
+import GoogleButton from '../../components/GoogleButton'
 import '../../components/AuthForm.css'
 
 const INITIAL = { displayName: '', username: '', email: '', password: '', confirmPassword: '' }
 
 export default function Register() {
-  const { register } = useAuth()
+  const { register, loginWithGoogle } = useAuth()
   const navigate = useNavigate()
 
   const [form, setForm] = useState(INITIAL)
@@ -59,6 +60,19 @@ export default function Register() {
     } catch (err) {
       setErrors(getFieldErrors(err))
       setServerError(getErrorMessage(err, 'No se pudo crear la cuenta'))
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  const onGoogle = async (idToken) => {
+    setSubmitting(true)
+    setServerError('')
+    try {
+      await loginWithGoogle(idToken)
+      navigate(ROUTES.HOME, { replace: true })
+    } catch (err) {
+      setServerError(getErrorMessage(err, 'No se pudo registrar con Google'))
     } finally {
       setSubmitting(false)
     }
@@ -117,6 +131,8 @@ export default function Register() {
       <Button type="submit" fullWidth loading={submitting}>
         Crear cuenta
       </Button>
+
+      <GoogleButton onCredential={onGoogle} text="signup_with" disabled={submitting} />
 
       <p className="auth-form__footer">
         ¿Ya tienes cuenta? <Link to={ROUTES.LOGIN}>Inicia sesión</Link>

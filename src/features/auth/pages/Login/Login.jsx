@@ -7,10 +7,11 @@ import { collectErrors, validateEmail } from '../../../../utils/validators'
 import Button from '../../../../components/common/Button'
 import Input from '../../../../components/common/Input'
 import ErrorMessage from '../../../../components/common/ErrorMessage'
+import GoogleButton from '../../components/GoogleButton'
 import '../../components/AuthForm.css'
 
 export default function Login() {
-  const { login } = useAuth()
+  const { login, loginWithGoogle } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const redirectTo = location.state?.from?.pathname ?? ROUTES.HOME
@@ -38,6 +39,19 @@ export default function Login() {
       navigate(redirectTo, { replace: true })
     } catch (err) {
       setServerError(getErrorMessage(err, 'No se pudo iniciar sesión'))
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  const onGoogle = async (idToken) => {
+    setSubmitting(true)
+    setServerError('')
+    try {
+      await loginWithGoogle(idToken)
+      navigate(redirectTo, { replace: true })
+    } catch (err) {
+      setServerError(getErrorMessage(err, 'No se pudo iniciar sesión con Google'))
     } finally {
       setSubmitting(false)
     }
@@ -73,6 +87,8 @@ export default function Login() {
       <Button type="submit" fullWidth loading={submitting}>
         Entrar
       </Button>
+
+      <GoogleButton onCredential={onGoogle} disabled={submitting} />
 
       <p className="auth-form__footer">
         ¿No tienes cuenta? <Link to={ROUTES.REGISTER}>Regístrate</Link>
