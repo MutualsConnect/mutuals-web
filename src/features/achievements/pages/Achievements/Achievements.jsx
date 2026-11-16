@@ -8,6 +8,7 @@ import Loader from '../../../../components/common/Loader'
 import Tabs from '../../../../components/common/Tabs'
 import AchievementBadge from '../../components/AchievementBadge'
 import './Achievements.css'
+import Icon from '../../../../components/common/Icon'
 
 export default function Achievements() {
   const { data: catalog, loading, error, run: reload } = useAsync(() => achievementService.getCatalog(), [])
@@ -51,7 +52,7 @@ export default function Achievements() {
           <span style={{ width: `${percent}%` }} />
         </div>
         <div>
-          <strong>💎 {gemsEarned}</strong>
+          <strong className="icon-text"><Icon name="gem" size={18} /> {gemsEarned}</strong>
           <span>ganadas</span>
         </div>
       </div>
@@ -60,13 +61,13 @@ export default function Achievements() {
 
       {!groups.length ? (
         <EmptyState
-          title={filter === 'unlocked' ? 'Todavía no desbloqueas logros' : '¡Los desbloqueaste todos! 🎉'}
+          title={filter === 'unlocked' ? 'Todavía no desbloqueas logros' : '¡Los desbloqueaste todos!'}
         />
       ) : (
         groups.map((group) => (
           <div key={group.type} className="achievements-page__group">
             <h2 className="achievements-page__group-title">
-              {ACHIEVEMENT_TYPES[group.type]?.icon} {ACHIEVEMENT_TYPES[group.type]?.label ?? 'Otros'}
+              <Icon name={ACHIEVEMENT_TYPES[group.type]?.icon ?? 'trophy'} size={18} /> {ACHIEVEMENT_TYPES[group.type]?.label ?? 'Otros'}
             </h2>
             <div className="achievements-page__list">
               {group.items.map((a) => (

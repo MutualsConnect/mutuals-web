@@ -1,60 +1,90 @@
+/*
+ * Tema de Mutuals, igual al de la app móvil (mobilemutuals/lib/core/theme):
+ * modo oscuro con superficies de vidrio, acento durazno y celeste para lo confirmado.
+ */
 :root {
-  --color-primary: #6d4aff;
-  --color-primary-hover: #5a38eb;
-  --color-primary-soft: #efeaff;
-  --color-on-primary: #ffffff;
-  --color-bg: #f7f7fb;
-  --color-bg-accent: #efeaff;
-  --color-surface: #ffffff;
-  --color-surface-hover: #f1f1f6;
-  --color-border: #e3e3ec;
-  --color-text: #1b1b25;
-  --color-text-muted: #6b6b7b;
-  --color-danger: #d93a3a;
-  --color-danger-soft: #fdecec;
-  --color-success: #1f9d55;
-  --color-success-soft: #e6f6ec;
-  --color-warning: #b45309;
-  --color-warning-soft: #fef3e2;
-  --color-streak: #ff5a1f;
+  color-scheme: dark;
 
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --shadow-lg: 0 10px 30px rgba(20, 20, 40, 0.12);
+  /* Paleta (AppColors del mobile) */
+  --peach: #ffbe91;            /* acento principal: botones, racha */
+  --on-accent: #2b1b14;        /* texto sobre el durazno */
+  --sky: #cfebff;              /* acento frío y estados confirmados */
+  --ink: #f7f3ee;              /* texto principal */
+  --ink-soft: #b0aab8;         /* texto secundario */
+  --background: #0b0a12;       /* fondo base */
+  --popup: #1b1926;            /* modales y menús (sólido) */
+  --danger: #ff6b5b;
+
+  /* Vidrio */
+  --glass: rgba(255, 255, 255, 0.1);
+  --glass-soft: rgba(255, 255, 255, 0.06);
+  --glass-strong: rgba(255, 255, 255, 0.16);
+  --glass-peach: rgba(255, 190, 145, 0.2);
+  --glass-sky: rgba(207, 235, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
+
+  /* Tokens semánticos que usan los componentes */
+  --color-primary: var(--peach);
+  --color-primary-hover: #ffcca8;
+  --color-primary-soft: var(--glass-peach);
+  --color-on-primary: var(--on-accent);
+  --color-bg: var(--background);
+  --color-bg-accent: transparent;
+  --color-surface: var(--glass);
+  --color-surface-hover: var(--glass-strong);
+  --color-surface-solid: var(--popup);
+  --color-border: var(--glass-border);
+  --color-text: var(--ink);
+  --color-text-muted: var(--ink-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: rgba(255, 107, 91, 0.18);
+  --color-success: var(--sky);
+  --color-success-soft: var(--glass-sky);
+  --color-warning: #ffcf9e;
+  --color-warning-soft: rgba(255, 190, 145, 0.14);
+  --color-streak: var(--peach);
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 28px;
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.45);
 
   --navbar-height: 64px;
-  --bottom-nav-height: 64px;
+  --bottom-nav-height: 68px;
   --content-max-width: 960px;
 
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: system-ui, -apple-system, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
   color: var(--color-text);
   background: var(--color-bg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary-soft: #2a2250;
-    --color-bg: #111118;
-    --color-bg-accent: #1a1730;
-    --color-surface: #1b1b25;
-    --color-surface-hover: #262633;
-    --color-border: #2f2f3d;
-    --color-text: #ececf3;
-    --color-text-muted: #a0a0b2;
-    --color-danger-soft: #3a1c1c;
-    --color-success: #4ade80;
-    --color-success-soft: #14301f;
-    --color-warning: #fbbf24;
-    --color-warning-soft: #3a2c10;
-  }
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Fondo ambiental: dos resplandores suaves (durazno y azul) como AmbientBackground */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(60vmax 60vmax at -10% -10%, rgba(255, 190, 145, 0.32), transparent 60%),
+    radial-gradient(55vmax 55vmax at 110% 110%, rgba(110, 139, 255, 0.26), transparent 60%),
+    var(--background);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; min-width: 320px; }
-a { color: var(--color-primary); }
+h1, h2, h3 { font-weight: 800; letter-spacing: -0.01em; }
+/* Como los TextButton del mobile: durazno, en negrita y sin subrayado */
+a { color: var(--color-primary); font-weight: 700; text-decoration: none; }
+a:hover { text-decoration: underline; }
+a.btn:hover, nav a:hover { text-decoration: none; }
 img { max-width: 100%; display: block; }
 button, input, textarea, select { font: inherit; }
+select option { background: var(--popup); color: var(--ink); }
+::selection { background: var(--peach); color: var(--on-accent); }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px;
@@ -62,4 +92,14 @@ button, input, textarea, select { font: inherit; }
   clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 
+/* Ícono alineado con el texto */
+.icon { display: inline-block; flex-shrink: 0; vertical-align: -0.15em; }
+
 @keyframes spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Ícono + texto en línea */
+.icon-text { display: inline-flex; align-items: center; gap: 6px; }

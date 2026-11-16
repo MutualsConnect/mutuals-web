@@ -1,6 +1,7 @@
 import { formatDate, pluralize } from '../../../../utils/format'
 import { CURRENCY_ICONS, CURRENCY_NAMES, TRANSACTION_TYPE_LABELS } from '../../constants'
 import './TransactionItem.css'
+import Icon from '../../../../components/common/Icon'
 
 // Un movimiento (WalletTransactionResponse). amount ya viene con signo.
 export default function TransactionItem({ transaction }) {
@@ -11,7 +12,7 @@ export default function TransactionItem({ transaction }) {
   return (
     <li className="transaction-item">
       <span className="transaction-item__icon" aria-hidden>
-        {CURRENCY_ICONS[currency]}
+        <Icon name={CURRENCY_ICONS[currency]} size={20} />
       </span>
       <div className="transaction-item__body">
         <span className="transaction-item__title">

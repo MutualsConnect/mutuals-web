@@ -64,7 +64,7 @@ export default function Shields() {
             devuelve.
           </li>
           <li>
-            Una racha que nunca usó escudo es una <strong>racha pura ✨</strong>.
+            Una racha que nunca usó escudo es una <strong>racha pura</strong>.
           </li>
           <li>
             Los escudos <strong>nunca se venden con dinero real</strong>: solo con gemas, regalos de
@@ -79,7 +79,7 @@ export default function Shields() {
         shields={wallet.shields}
         onGifted={(next, name) => {
           applyWallet(next)
-          setNotice(`Le regalaste un escudo a ${name} 🛡️`)
+          setNotice(`Le regalaste un escudo a ${name}.`)
         }}
       />
     </section>

@@ -5,6 +5,7 @@ import Avatar from '../../common/Avatar'
 import UnreadBadge from '../../../features/notifications/components/UnreadBadge'
 import { useNotifications } from '../../../hooks/useNotifications'
 import './Navbar.css'
+import Icon from '../../common/Icon'
 
 const LINKS = [
   { to: ROUTES.HOME, label: 'Inicio', end: true },
@@ -22,6 +23,9 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <Link to={ROUTES.HOME} className="navbar__brand">
+        <span className="navbar__logo">
+          <Icon name="flame" size={20} />
+        </span>
         Mutuals
       </Link>
 
@@ -43,8 +47,8 @@ export default function Navbar() {
         {user && (
           <>
             <Link to={ROUTES.WALLET} className="navbar__wallet" title="Billetera">
-              <span className="navbar__stat">💎 {user.gems}</span>
-              <span className="navbar__stat">🛡️ {user.shields}</span>
+              <span className="navbar__stat"><Icon name="gem" size={16} /> {user.gems}</span>
+              <span className="navbar__stat"><Icon name="shield" size={16} /> {user.shields}</span>
             </Link>
             <Link to={ROUTES.PROFILE} aria-label="Mi perfil">
               <Avatar src={user.avatarUrl} name={user.displayName} size={32} />

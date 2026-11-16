@@ -7,6 +7,7 @@ import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Loader from '../../../../components/common/Loader'
 import UserListItem from '../../components/UserListItem'
 import '../../../user/components/UserPage.css'
+import Icon from '../../../../components/common/Icon'
 
 // Mis mutuals (personas que sigo y me siguen) en formato lista
 export default function Mutuals() {
@@ -38,7 +39,7 @@ export default function Mutuals() {
               action={
                 m.streak ? (
                   <Link to={streakPath(m.streak.id)} className="btn btn--secondary btn--sm">
-                    🔥 {m.streak.currentLength}
+                    <Icon name="flame" size={14} filled /> {m.streak.currentLength}
                   </Link>
                 ) : null
               }

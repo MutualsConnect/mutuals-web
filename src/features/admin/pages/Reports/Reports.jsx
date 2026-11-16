@@ -39,7 +39,7 @@ export default function Reports() {
       ) : list.error && !list.items.length ? (
         <ErrorMessage message={list.error} onRetry={list.reload} />
       ) : !list.items.length ? (
-        <EmptyState title={status === 'PENDING' ? 'No hay reportes pendientes 🎉' : 'No hay reportes'} />
+        <EmptyState title={status === 'PENDING' ? 'No hay reportes pendientes' : 'No hay reportes'} />
       ) : (
         <div className="admin-page__list">
           {list.items.map((r) => (

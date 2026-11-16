@@ -6,6 +6,7 @@ import Badge from '../../../../components/common/Badge'
 import Card from '../../../../components/common/Card'
 import MethodBars from '../MethodBars'
 import './FriendSection.css'
+import Icon from '../../../../components/common/Icon'
 
 // FriendWrappedSection: historia completa con un amigo (o ex amigo)
 export default function FriendSection({ section }) {
@@ -33,7 +34,7 @@ export default function FriendSection({ section }) {
           <span>interacciones</span>
         </div>
         <div>
-          <strong>🔥 {section.bestStreak}</strong>
+          <strong className="icon-text"><Icon name="flame" size={16} filled /> {section.bestStreak}</strong>
           <span>mejor racha</span>
         </div>
         <div>
@@ -41,7 +42,7 @@ export default function FriendSection({ section }) {
           <span>rachas</span>
         </div>
         <div>
-          <strong>🎯 {formatNumber(section.challengesCompleted)}</strong>
+          <strong className="icon-text"><Icon name="target" size={16} /> {formatNumber(section.challengesCompleted)}</strong>
           <span>desafíos</span>
         </div>
       </div>

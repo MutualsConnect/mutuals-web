@@ -3,6 +3,7 @@ import { ROUTES } from '../constants/routes'
 import ProtectedRoute from './ProtectedRoute'
 import PublicRoute from './PublicRoute'
 import AdminRoute from './AdminRoute'
+import HomeGate from './HomeGate'
 import MainLayout from '../layouts/MainLayout'
 import AuthLayout from '../layouts/AuthLayout'
 import AdminLayout from '../layouts/AdminLayout'
@@ -62,10 +63,14 @@ export default function AppRouter() {
           <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
         </Route>
 
+        {/* Inicio: landing para visitantes, Home para usuarios con sesión */}
+        <Route path={ROUTES.HOME} element={<HomeGate />}>
+          <Route index element={<Home />} />
+        </Route>
+
         {/* Rutas privadas (con sesión) */}
         <Route element={<ProtectedRoute />}>
           <Route element={<MainLayout />}>
-            <Route path={ROUTES.HOME} element={<Home />} />
 
             {/* Rachas */}
             <Route path={ROUTES.STREAKS} element={<StreakList />} />

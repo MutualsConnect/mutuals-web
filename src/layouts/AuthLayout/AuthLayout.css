@@ -2,13 +2,17 @@
   min-height: 100vh;
   display: flex; align-items: center; justify-content: center;
   padding: 16px;
-  background: var(--color-bg-accent);
 }
 .auth-layout__card {
   width: 100%; max-width: 420px;
   padding: 32px 24px;
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
+  background: var(--glass-gradient);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
   box-shadow: var(--shadow-lg);
 }
-.auth-layout__brand { margin: 0 0 24px; text-align: center; font-size: 2rem; color: var(--color-primary); }
+.auth-layout__brand { display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 0 0 24px; text-decoration: none; color: var(--ink); }
+.auth-layout__logo { display: flex; align-items: center; justify-content: center; width: 72px; height: 72px; border-radius: 24px; background: var(--peach); color: var(--on-accent); }
+.auth-layout__name { margin: 0; font-size: 1.75rem; font-weight: 900; }

@@ -7,6 +7,7 @@ import Button from '../../../../components/common/Button'
 import Card from '../../../../components/common/Card'
 import ErrorMessage from '../../../../components/common/ErrorMessage'
 import './PurchaseShields.css'
+import Icon from '../../../../components/common/Icon'
 
 // Compra de escudos con gemas (nunca con dinero real)
 export default function PurchaseShields({ wallet, onPurchased }) {
@@ -39,7 +40,7 @@ export default function PurchaseShields({ wallet, onPurchased }) {
     <Card className="purchase-shields">
       <div className="purchase-shields__header">
         <h2 className="purchase-shields__title">Comprar escudos</h2>
-        <span className="purchase-shields__price">💎 {wallet.shieldPriceGems} c/u</span>
+        <span className="purchase-shields__price"><Icon name="gem" size={14} /> {wallet.shieldPriceGems} c/u</span>
       </div>
 
       <ErrorMessage message={error} />
@@ -57,7 +58,7 @@ export default function PurchaseShields({ wallet, onPurchased }) {
             −
           </button>
           <span className="stepper__value" aria-live="polite">
-            🛡️ {quantity}
+            <Icon name="shield" size={16} /> {quantity}
           </span>
           <button
             type="button"
@@ -70,7 +71,7 @@ export default function PurchaseShields({ wallet, onPurchased }) {
           </button>
         </div>
         <Button onClick={buy} loading={buying} disabled={!canAfford}>
-          Comprar por 💎 {total}
+          Comprar por <Icon name="gem" size={16} /> {total}
         </Button>
       </div>
 
@@ -79,7 +80,7 @@ export default function PurchaseShields({ wallet, onPurchased }) {
           ? `Hasta ${MAX_SHIELD_PURCHASE} por compra.`
           : maxAffordable > 0
             ? `Te alcanza para ${pluralize(maxAffordable, 'escudo')}.`
-            : `Te faltan 💎 ${total - wallet.gems}. Gana gemas manteniendo tus rachas y completando retos.`}
+            : `Te faltan ${total - wallet.gems} gemas. Gana gemas manteniendo tus rachas y completando retos.`}
       </p>
     </Card>
   )

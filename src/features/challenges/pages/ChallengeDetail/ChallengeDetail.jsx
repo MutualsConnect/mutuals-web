@@ -35,7 +35,7 @@ export default function ChallengeDetail() {
   const onSubmitted = (updated) => {
     setData(updated)
     if (updated.status === 'COMPLETED') {
-      setNotice(`¡Desafío completado! Ganaron 💎 ${template.rewardGems} cada uno.`)
+      setNotice(`¡Desafío completado! Ganaron ${template.rewardGems} gemas cada uno.`)
       refreshUser().catch(() => {}) // actualiza las gemas
     } else {
       setNotice(`Listo. Cuando ${friend.displayName} responda, verán las respuestas de los dos.`)

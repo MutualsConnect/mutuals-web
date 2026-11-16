@@ -11,6 +11,7 @@ import MethodBars from '../../components/MethodBars'
 import ShareButton from '../../components/ShareButton'
 import '../../components/WrappedPage.css'
 import '../../components/WrappedStory/WrappedStory.css'
+import Icon from '../../../../components/common/Icon'
 
 const VALID_KEY = /^\d{4}(-\d{2})?$/
 
@@ -54,9 +55,12 @@ export default function WrappedDetail() {
       {isPlatform ? (
         <div className="wrapped-story">
           <section className="story-card story-card--violet">
+            <span className="story-card__icon">
+              <Icon name="globe" size={40} />
+            </span>
             <span className="story-card__kicker">Mutuals Wrapped</span>
             <strong className="story-card__value">{label}</strong>
-            <p className="story-card__caption">Lo que hizo toda la comunidad 🌎</p>
+            <p className="story-card__caption">Lo que hizo toda la comunidad</p>
           </section>
           <section className="story-card story-card--orange">
             <span className="story-card__kicker">Interacciones</span>
@@ -65,7 +69,10 @@ export default function WrappedDetail() {
           </section>
           <section className="story-card story-card--pink">
             <span className="story-card__kicker">La racha más larga</span>
-            <strong className="story-card__value">🔥 {s.longestStreak ?? 0}</strong>
+            <span className="story-card__icon">
+              <Icon name="flame" size={40} />
+            </span>
+            <strong className="story-card__value">{s.longestStreak ?? 0}</strong>
             {s.mostActiveDay && (
               <p className="story-card__caption">
                 El día más activo fue el {formatLocalDate(s.mostActiveDay, { day: 'numeric', month: 'long' })}

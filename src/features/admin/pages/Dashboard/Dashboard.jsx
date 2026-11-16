@@ -52,13 +52,13 @@ export default function Dashboard() {
       ) : (
         <StatGrid
           stats={[
-            { label: 'Usuarios activos', value: m.activeUsers, icon: '👥' },
-            { label: 'Usuarios suspendidos', value: m.suspendedUsers, icon: '⛔', tone: m.suspendedUsers ? 'danger' : undefined },
-            { label: 'Mutuals activos', value: m.activeMutuals, icon: '🤝' },
-            { label: 'Rachas activas', value: m.activeStreaks, icon: '🔥' },
-            { label: 'Rachas rotas', value: m.brokenStreaks, icon: '💔' },
-            { label: 'Reportes pendientes', value: m.pendingReports, icon: '🚩', tone: m.pendingReports ? 'warning' : undefined },
-            { label: 'Suscriptores Plus', value: m.plusSubscribers, icon: '✦', tone: 'primary' },
+            { label: 'Usuarios activos', value: m.activeUsers, icon: 'users' },
+            { label: 'Usuarios suspendidos', value: m.suspendedUsers, icon: 'ban', tone: m.suspendedUsers ? 'danger' : undefined },
+            { label: 'Mutuals activos', value: m.activeMutuals, icon: 'handshake' },
+            { label: 'Rachas activas', value: m.activeStreaks, icon: 'flame' },
+            { label: 'Rachas rotas', value: m.brokenStreaks, icon: 'heartCrack' },
+            { label: 'Reportes pendientes', value: m.pendingReports, icon: 'flag', tone: m.pendingReports ? 'warning' : undefined },
+            { label: 'Suscriptores Plus', value: m.plusSubscribers, icon: 'crown', tone: 'primary' },
           ]}
         />
       )}

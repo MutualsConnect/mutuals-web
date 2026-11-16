@@ -25,7 +25,7 @@ export default function Wallet() {
 
   const onGifted = (next, name) => {
     applyWallet(next)
-    setNotice(`Le regalaste un escudo a ${name} 🛡️`)
+    setNotice(`Le regalaste un escudo a ${name}.`)
     recent.run().catch(() => {})
   }
 

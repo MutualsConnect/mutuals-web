@@ -1,14 +1,16 @@
 .field { display: flex; flex-direction: column; gap: 6px; }
-.field__label { font-size: 0.875rem; font-weight: 600; }
+.field__label { font-size: 0.875rem; font-weight: 700; color: var(--ink-soft); }
 .field__input {
-  padding: 10px 12px;
-  border: 1px solid var(--color-border);
+  padding: 14px 18px;
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  background: var(--color-surface);
-  color: var(--color-text);
+  background: var(--glass);
+  color: var(--ink);
   font-size: 1rem;
 }
-.field__input:focus { outline: 2px solid var(--color-primary); outline-offset: 1px; }
-.field__input--error { border-color: var(--color-danger); }
-.field__error { margin: 0; font-size: 0.8rem; color: var(--color-danger); }
-.field__hint { margin: 0; font-size: 0.8rem; color: var(--color-text-muted); }
+.field__input::placeholder { color: var(--ink-soft); }
+.field__input:focus { outline: none; border-color: var(--peach); box-shadow: 0 0 0 1px var(--peach); }
+.field__input:disabled { opacity: 0.6; }
+.field__input--error { border-color: var(--danger); }
+.field__error { margin: 0; font-size: 0.8rem; color: var(--danger); }
+.field__hint { margin: 0; font-size: 0.8rem; color: var(--ink-soft); }

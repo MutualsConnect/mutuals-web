@@ -14,7 +14,7 @@ export default function Home() {
     <section className="home">
       <header className="home__header">
         <div>
-          <h1 className="home__title">Hola, {user?.displayName} 👋</h1>
+          <h1 className="home__title">Hola, {user?.displayName}</h1>
           <p className="home__subtitle">Tu racha personal</p>
         </div>
         <StreakFlame days={user?.personalStreak ?? 0} size="lg" />

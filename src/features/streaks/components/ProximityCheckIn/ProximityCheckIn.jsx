@@ -74,7 +74,7 @@ export default function ProximityCheckIn({ onCheckedIn }) {
         </option>
         {withStreak.map((m) => (
           <option key={m.friend.id} value={m.friend.id}>
-            {m.friend.displayName} (🔥 {m.streak.currentLength})
+            {m.friend.displayName} · racha de {m.streak.currentLength}
           </option>
         ))}
       </select>

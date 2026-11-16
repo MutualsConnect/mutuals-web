@@ -9,6 +9,7 @@ import QrScanner from '../../components/QrScanner'
 import ProximityCheckIn from '../../components/ProximityCheckIn'
 import '../../components/StreakPage.css'
 import './CheckIn.css'
+import Icon from '../../../../components/common/Icon'
 
 const TABS = [
   { value: 'my-qr', label: 'Mi QR' },
@@ -38,7 +39,7 @@ export default function CheckIn() {
 
       {success && (
         <div className="check-in__success" role="status">
-          <span className="check-in__success-icon">🔥</span>
+          <Icon name="flame" className="check-in__success-icon" size={30} filled />
           <div>
             <strong>¡Check-in confirmado!</strong>
             {success.streakLength != null && <div>La racha va en {success.streakLength} días.</div>}

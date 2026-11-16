@@ -1,5 +1,6 @@
 import { PLAN_COMPARISON } from '../../constants'
 import './PlanComparison.css'
+import Icon from '../../../../components/common/Icon'
 
 export default function PlanComparison({ currentPlan }) {
   return (
@@ -10,7 +11,7 @@ export default function PlanComparison({ currentPlan }) {
           Gratis
         </span>
         <span role="columnheader" className={`plan-comparison__plus ${currentPlan === 'PLUS' ? 'is-current' : ''}`}>
-          ✦ Plus
+          <Icon name="crown" size={14} /> Plus
         </span>
       </div>
       {PLAN_COMPARISON.map((row) => (

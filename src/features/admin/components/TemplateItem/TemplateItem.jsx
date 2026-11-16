@@ -2,6 +2,7 @@ import Badge from '../../../../components/common/Badge'
 import Button from '../../../../components/common/Button'
 import Card from '../../../../components/common/Card'
 import { CHALLENGE_TYPES } from '../../../challenges/constants'
+import Icon from '../../../../components/common/Icon'
 
 // ChallengeTemplateResponse
 export default function TemplateItem({ template, onEdit, onDeactivate, busy }) {
@@ -16,12 +17,12 @@ export default function TemplateItem({ template, onEdit, onDeactivate, busy }) {
       <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
         {type && (
           <Badge>
-            {type.icon} {type.label}
+            <Icon name={type.icon} size={12} /> {type.label}
           </Badge>
         )}
-        <Badge tone="primary">💎 {template.rewardGems}</Badge>
-        {template.requiresPresence && <Badge tone="warning">📍 Presencial</Badge>}
-        {template.requiresPhoto && <Badge tone="warning">📷 Foto</Badge>}
+        <Badge tone="primary"><Icon name="gem" size={12} /> {template.rewardGems}</Badge>
+        {template.requiresPresence && <Badge tone="warning"><Icon name="pin" size={12} /> Presencial</Badge>}
+        {template.requiresPhoto && <Badge tone="warning"><Icon name="camera" size={12} /> Foto</Badge>}
       </div>
       <div style={{ display: 'flex', gap: 8 }}>
         <Button size="sm" variant="secondary" onClick={() => onEdit(template)}>

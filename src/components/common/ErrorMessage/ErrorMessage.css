@@ -1,9 +1,10 @@
 .error-message {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  padding: 10px 14px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 107, 91, 0.35);
   border-radius: var(--radius-md);
   background: var(--color-danger-soft);
-  color: var(--color-danger);
+  color: #ffd3cd;
   font-size: 0.9rem;
 }
-.error-message__retry { border: none; background: none; color: inherit; font-weight: 600; cursor: pointer; text-decoration: underline; }
+.error-message__retry { border: none; background: none; color: inherit; font-weight: 700; cursor: pointer; text-decoration: underline; }

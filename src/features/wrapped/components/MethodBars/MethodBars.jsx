@@ -1,8 +1,9 @@
 import { INTERACTION_METHOD_LABELS } from '../../../streaks/constants'
 import { formatNumber } from '../../../../utils/format'
 import './MethodBars.css'
+import Icon from '../../../../components/common/Icon'
 
-const ICONS = { MANUAL: '✍️', QR: '📷', PROXIMITY: '📍' }
+const ICONS = { MANUAL: 'pen', QR: 'qr', PROXIMITY: 'pin' }
 
 // interactionsByMethod: { MANUAL: 10, QR: 4, PROXIMITY: 2 }
 export default function MethodBars({ byMethod }) {
@@ -17,7 +18,7 @@ export default function MethodBars({ byMethod }) {
         .map(([method, count]) => (
           <li key={method}>
             <span className="method-bars__label">
-              {ICONS[method] ?? '•'} {INTERACTION_METHOD_LABELS[method] ?? method}
+              <Icon name={ICONS[method] ?? 'chat'} size={16} /> {INTERACTION_METHOD_LABELS[method] ?? method}
             </span>
             <span className="method-bars__track">
               <span className="method-bars__fill" style={{ width: `${(count / max) * 100}%` }} />

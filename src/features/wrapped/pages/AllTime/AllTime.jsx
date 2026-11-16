@@ -9,6 +9,7 @@ import WrappedStory from '../../components/WrappedStory'
 import FriendSection from '../../components/FriendSection'
 import { FREE_FRIEND_SECTIONS } from '../../constants'
 import '../../components/WrappedPage.css'
+import Icon from '../../../../components/common/Icon'
 
 // Wrapped de siempre: se calcula al momento. Gratis: resumen y 3 amigos. Plus: todos.
 export default function AllTime() {
@@ -43,7 +44,7 @@ export default function AllTime() {
             con todos, incluso ex amigos.
           </span>
           <Link to={ROUTES.SUBSCRIPTION} className="btn btn--primary btn--sm">
-            ✦ Ver Plus
+            <Icon name="crown" size={14} /> Ver Plus
           </Link>
         </Card>
       )}

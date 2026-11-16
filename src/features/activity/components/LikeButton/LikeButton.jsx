@@ -1,4 +1,5 @@
 import './LikeButton.css'
+import Icon from '../../../../components/common/Icon'
 
 export default function LikeButton({ liked, count, onToggle, disabled }) {
   return (
@@ -10,7 +11,7 @@ export default function LikeButton({ liked, count, onToggle, disabled }) {
       aria-pressed={liked}
       aria-label={liked ? 'Quitar me gusta' : 'Me gusta'}
     >
-      <span aria-hidden>{liked ? '❤️' : '🤍'}</span>
+      <Icon name="heart" size={16} filled={liked} />
       <span>{count}</span>
     </button>
   )

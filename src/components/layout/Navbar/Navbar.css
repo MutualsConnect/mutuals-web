@@ -3,20 +3,36 @@
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   height: var(--navbar-height);
   padding: 0 24px;
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(11, 10, 18, 0.55);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-bottom: 1px solid var(--glass-border);
 }
-.navbar__brand { font-size: 1.25rem; font-weight: 800; color: var(--color-primary); text-decoration: none; }
+.navbar__brand { display: inline-flex; align-items: center; gap: 8px; font-size: 1.2rem; font-weight: 900; color: var(--ink); text-decoration: none; }
+.navbar__logo { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 10px; background: var(--peach); color: var(--on-accent); }
 .navbar__links { display: flex; gap: 4px; }
-.navbar__link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: var(--radius-md); color: var(--color-text-muted); text-decoration: none; font-weight: 500; }
-.navbar__link:hover { background: var(--color-surface-hover); }
-.navbar__link.active { color: var(--color-primary); background: var(--color-primary-soft); }
+.navbar__link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; color: var(--ink-soft); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+.navbar__link:hover { color: var(--ink); background: var(--glass-soft); }
+.navbar__link.active { color: var(--on-accent); background: var(--peach); }
 .navbar__user { display: flex; align-items: center; gap: 12px; }
-.navbar__wallet { display: flex; gap: 10px; padding: 6px 10px; border-radius: var(--radius-md); color: var(--color-text); text-decoration: none; }
-.navbar__wallet:hover { background: var(--color-surface-hover); }
-.navbar__stat { font-size: 0.9rem; font-weight: 600; }
-.navbar__logout { border: none; background: none; color: var(--color-text-muted); cursor: pointer; }
+.navbar__wallet { display: flex; gap: 12px; padding: 6px 12px; border: 1px solid var(--glass-border); border-radius: 999px; background: var(--glass-soft); color: var(--ink); text-decoration: none; }
+.navbar__wallet:hover { background: var(--glass); }
+.navbar__stat { display: inline-flex; align-items: center; gap: 4px; font-size: 0.9rem; font-weight: 800; }
+.navbar__stat .icon { color: var(--peach); }
+.navbar__logout { border: none; background: none; color: var(--ink-soft); font-weight: 700; cursor: pointer; }
+.navbar__logout:hover { color: var(--ink); }
 
+/* "Salir" también está en Configuración: se oculta cuando falta espacio */
+@media (max-width: 1100px) {
+  .navbar { gap: 10px; padding: 0 16px; }
+  .navbar__links { gap: 2px; }
+  .navbar__link { padding: 8px 10px; font-size: 0.875rem; }
+  .navbar__logout { display: none; }
+}
+@media (max-width: 900px) {
+  .navbar__brand { font-size: 0; gap: 0; }
+  .navbar__link { padding: 7px 8px; font-size: 0.82rem; }
+}
 @media (max-width: 768px) {
   .navbar { padding: 0 16px; }
   .navbar__links, .navbar__logout { display: none; }

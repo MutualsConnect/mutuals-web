@@ -12,8 +12,9 @@ import EmptyState from '../../../../components/common/EmptyState'
 import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Loader from '../../../../components/common/Loader'
 import '../../components/UserPage.css'
+import Icon from '../../../../components/common/Icon'
 
-const PLATFORM_ICONS = { ANDROID: '🤖', IOS: '📱', WEB: '💻' }
+const PLATFORM_ICONS = { ANDROID: 'android', IOS: 'phone', WEB: 'monitor' }
 
 // Dispositivos registrados para notificaciones push
 export default function Devices() {
@@ -61,9 +62,7 @@ export default function Devices() {
         <div className="user-page__list">
           {devices.map((device) => (
             <Card key={device.id} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{ fontSize: '1.5rem' }} aria-hidden>
-                {PLATFORM_ICONS[device.platform] ?? '📟'}
-              </span>
+              <Icon name={PLATFORM_ICONS[device.platform] ?? 'phone'} size={26} />
               <div style={{ flex: 1 }}>
                 <strong>{DEVICE_PLATFORM_LABELS[device.platform] ?? device.platform}</strong>
                 <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>

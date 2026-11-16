@@ -8,6 +8,7 @@ import EmptyState from '../../../../components/common/EmptyState'
 import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Loader from '../../../../components/common/Loader'
 import '../../components/WrappedPage.css'
+import Icon from '../../../../components/common/Icon'
 
 export default function WrappedHistory() {
   const { data: wrappeds, loading, error, run: reload } = useAsync(() => wrappedService.getMine(), [])
@@ -25,12 +26,12 @@ export default function WrappedHistory() {
       </header>
 
       <Link to={ROUTES.WRAPPED_ALL_TIME} className="wrapped-item wrapped-item--alltime">
-        <span className="wrapped-item__icon" aria-hidden>♾️</span>
+        <span className="wrapped-item__icon"><Icon name="infinity" size={24} /></span>
         <span className="wrapped-item__body">
           <span className="wrapped-item__title">De siempre</span>
           <span className="wrapped-item__meta">Tu historia completa y con cada amigo</span>
         </span>
-        <span aria-hidden>›</span>
+        <Icon name="chevron" size={20} />
       </Link>
 
       {loading ? (
@@ -50,8 +51,8 @@ export default function WrappedHistory() {
               to={wrappedPath(w.periodKey)}
               className={`wrapped-item ${w.periodType === 'YEARLY' ? 'wrapped-item--yearly' : ''}`}
             >
-              <span className="wrapped-item__icon" aria-hidden>
-                {w.periodType === 'YEARLY' ? '🏆' : '🎁'}
+              <span className="wrapped-item__icon">
+                <Icon name={w.periodType === 'YEARLY' ? 'trophy' : 'gift'} size={24} />
               </span>
               <span className="wrapped-item__body">
                 <span className="wrapped-item__title">{periodLabel(w.periodType, w.periodKey)}</span>
@@ -60,7 +61,7 @@ export default function WrappedHistory() {
                   {formatDate(w.generatedAt, { day: 'numeric', month: 'short' })}
                 </span>
               </span>
-              <span aria-hidden>›</span>
+              <Icon name="chevron" size={20} />
             </Link>
           ))}
         </div>
@@ -68,12 +69,12 @@ export default function WrappedHistory() {
 
       {platform.data && (
         <Link to={wrappedPath(platform.data.periodKey, true)} className="wrapped-item wrapped-item--platform">
-          <span className="wrapped-item__icon" aria-hidden>🌎</span>
+          <span className="wrapped-item__icon"><Icon name="globe" size={24} /></span>
           <span className="wrapped-item__body">
             <span className="wrapped-item__title">Mutuals en {periodLabel('MONTHLY', platform.data.periodKey).toLowerCase()}</span>
             <span className="wrapped-item__meta">Lo que hizo toda la comunidad</span>
           </span>
-          <span aria-hidden>›</span>
+          <Icon name="chevron" size={20} />
         </Link>
       )}
     </section>

@@ -6,6 +6,7 @@ import Badge from '../../../../components/common/Badge'
 import Card from '../../../../components/common/Card'
 import StreakFlame from '../../../streaks/components/StreakFlame'
 import './ProfileHeader.css'
+import Icon from '../../../../components/common/Icon'
 
 // Cabecera de un perfil público (PublicProfileResponse). children: botones de acción.
 export default function ProfileHeader({ profile, isMe = false, children }) {
@@ -20,7 +21,7 @@ export default function ProfileHeader({ profile, isMe = false, children }) {
           {profile.displayName}
           {profile.premium && (
             <span className="profile-header__plus" title="Mutuals Plus">
-              ✦ Plus
+              <Icon name="crown" size={12} /> Plus
             </span>
           )}
         </h1>
@@ -28,7 +29,7 @@ export default function ProfileHeader({ profile, isMe = false, children }) {
         {!isMe && (
           <div className="profile-header__badges">
             {isMutual ? (
-              <Badge tone="primary">Mutuals 🤝</Badge>
+              <Badge tone="primary"><Icon name="handshake" size={12} /> Mutuals</Badge>
             ) : (
               profile.followsMe && <Badge>Te sigue</Badge>
             )}
@@ -59,7 +60,7 @@ export default function ProfileHeader({ profile, isMe = false, children }) {
           <span>racha personal</span>
         </div>
         <div>
-          <strong>🏆 {profile.longestPersonalStreak}</strong>
+          <strong className="icon-text"><Icon name="trophy" size={16} /> {profile.longestPersonalStreak}</strong>
           <span>mejor racha</span>
         </div>
       </div>

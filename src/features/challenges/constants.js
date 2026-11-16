@@ -1,8 +1,8 @@
-// Enum ChallengeType
+// Enum ChallengeType (icon = nombre de <Icon>)
 export const CHALLENGE_TYPES = {
-  REMOTE: { label: 'A distancia', icon: '💬' },
-  IN_PERSON: { label: 'En persona', icon: '🤝' },
-  CREATIVE: { label: 'Creativo', icon: '🎨' },
+  REMOTE: { label: 'A distancia', icon: 'chat' },
+  IN_PERSON: { label: 'En persona', icon: 'handshake' },
+  CREATIVE: { label: 'Creativo', icon: 'palette' },
 }
 
 // Enum ChallengeStatus

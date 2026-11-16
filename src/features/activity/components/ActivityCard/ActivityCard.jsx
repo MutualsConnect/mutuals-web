@@ -9,13 +9,14 @@ import Badge from '../../../../components/common/Badge'
 import LikeButton from '../LikeButton'
 import CommentsSection from '../CommentsSection'
 import './ActivityCard.css'
+import Icon from '../../../../components/common/Icon'
 
 // Una novedad (ActivityResponse). onChange(updated) para actualizar la lista.
 export default function ActivityCard({ activity, isMine = false, onChange }) {
   const [busy, setBusy] = useState(false)
   const [showComments, setShowComments] = useState(false)
   const [error, setError] = useState('')
-  const type = ACTIVITY_TYPES[activity.type] ?? { icon: '✨', label: 'Novedad' }
+  const type = ACTIVITY_TYPES[activity.type] ?? { icon: 'sparkle', label: 'Novedad' }
 
   // Like optimista: se ve al instante y se revierte si falla
   const toggleLike = async () => {
@@ -49,8 +50,8 @@ export default function ActivityCard({ activity, isMine = false, onChange }) {
       </header>
 
       <div className="activity-card__body">
-        <span className="activity-card__icon" aria-hidden>
-          {type.icon}
+        <span className="activity-card__icon">
+          <Icon name={type.icon} size={26} />
         </span>
         <div>
           <p className="activity-card__title">{activity.title}</p>
@@ -67,7 +68,7 @@ export default function ActivityCard({ activity, isMine = false, onChange }) {
           onClick={() => setShowComments((s) => !s)}
           aria-expanded={showComments}
         >
-          💬 {activity.commentCount}
+          <Icon name="chat" size={16} /> {activity.commentCount}
         </button>
         {error && <span className="field__error">{error}</span>}
       </footer>

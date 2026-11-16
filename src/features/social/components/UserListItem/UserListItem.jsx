@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { profilePath } from '../../../../constants/routes'
 import Avatar from '../../../../components/common/Avatar'
 import './UserListItem.css'
+import Icon from '../../../../components/common/Icon'
 
 // Fila de un usuario (UserSummaryResponse). action: botón opcional a la derecha.
 export default function UserListItem({ user, action, subtitle }) {
@@ -18,7 +19,7 @@ export default function UserListItem({ user, action, subtitle }) {
         </span>
         {user.personalStreak > 0 && (
           <span className="user-list-item__streak" title="Racha personal">
-            🔥 {user.personalStreak}
+            <Icon name="flame" size={14} filled /> {user.personalStreak}
           </span>
         )}
       </Link>

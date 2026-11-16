@@ -1,4 +1,5 @@
 import './StreakFlame.css'
+import Icon from '../../../../components/common/Icon'
 
 // Fueguito con los días de racha. Gris si está en riesgo (no contó hoy).
 export default function StreakFlame({ days, atRisk = false, shieldArmed = false, size = 'md' }) {
@@ -7,14 +8,10 @@ export default function StreakFlame({ days, atRisk = false, shieldArmed = false,
       className={`streak-flame streak-flame--${size} ${atRisk ? 'streak-flame--risk' : ''}`}
       title={atRisk ? 'Todavía no cuenta hoy' : 'Hoy ya contó'}
     >
-      <span className="streak-flame__icon" aria-hidden>
-        🔥
-      </span>
+      <Icon name="flame" className="streak-flame__icon" size="1.1em" filled />
       <span className="streak-flame__days">{days}</span>
       {shieldArmed && (
-        <span className="streak-flame__shield" title="Escudo activo" aria-label="Escudo activo">
-          🛡️
-        </span>
+        <Icon name="shield" className="streak-flame__shield" size="0.85em" label="Escudo activo" />
       )}
     </span>
   )

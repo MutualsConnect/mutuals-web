@@ -57,7 +57,7 @@ export default function PendingInteractions() {
       ) : error ? (
         <ErrorMessage message={error} onRetry={reload} />
       ) : !interactions?.length ? (
-        <EmptyState title="Nada por confirmar" description="Estás al día ✨" />
+        <EmptyState title="Nada por confirmar" description="Estás al día." />
       ) : (
         <div className="streak-page__list">
           {interactions.map((interaction) => (

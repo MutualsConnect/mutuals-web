@@ -1,6 +1,7 @@
 import { formatRelativeTime } from '../../../../utils/format'
 import { NOTIFICATION_ICONS } from '../../constants'
 import './NotificationItem.css'
+import Icon from '../../../../components/common/Icon'
 
 export default function NotificationItem({ notification, onOpen }) {
   const { type, title, body, read, createdAt } = notification
@@ -13,7 +14,7 @@ export default function NotificationItem({ notification, onOpen }) {
         onClick={() => onOpen(notification)}
       >
         <span className="notification-item__icon" aria-hidden>
-          {NOTIFICATION_ICONS[type] ?? '🔔'}
+          <Icon name={NOTIFICATION_ICONS[type] ?? 'bell'} size={20} />
         </span>
         <span className="notification-item__body">
           <span className="notification-item__title">{title}</span>

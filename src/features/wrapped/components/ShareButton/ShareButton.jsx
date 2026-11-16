@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Button from '../../../../components/common/Button'
+import Icon from '../../../../components/common/Icon'
 
 // Comparte un texto con el menú del sistema (móvil) o lo copia al portapapeles
 export default function ShareButton({ title, text }) {
@@ -22,7 +23,7 @@ export default function ShareButton({ title, text }) {
 
   return (
     <Button variant="secondary" onClick={share}>
-      {copied ? '¡Copiado! ✓' : '📤 Compartir'}
+      {copied ? <><Icon name="check" size={16} /> ¡Copiado!</> : <><Icon name="share" size={16} /> Compartir</>}
     </Button>
   )
 }

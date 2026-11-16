@@ -1,12 +1,12 @@
 import { pluralize } from '../../utils/format'
 
-// Enum AchievementType: ícono por defecto (si el logro no trae iconUrl) y cómo leer la meta
+// Enum AchievementType: ícono (nombre de <Icon>) por defecto (si el logro no trae iconUrl) y cómo leer la meta
 export const ACHIEVEMENT_TYPES = {
-  STREAK: { label: 'Rachas', icon: '🔥', unit: ['día de racha', 'días de racha'] },
-  PERSONAL_STREAK: { label: 'Racha personal', icon: '⚡', unit: ['día seguido', 'días seguidos'] },
-  CHALLENGE: { label: 'Desafíos', icon: '🎯', unit: ['desafío', 'desafíos'] },
-  SOCIAL: { label: 'Social', icon: '🤝', unit: ['mutual', 'mutuals'] },
-  MONTHLY_MEDAL: { label: 'Medallas', icon: '🏅', unit: ['mes', 'meses'] },
+  STREAK: { label: 'Rachas', icon: 'flame', unit: ['día de racha', 'días de racha'] },
+  PERSONAL_STREAK: { label: 'Racha personal', icon: 'bolt', unit: ['día seguido', 'días seguidos'] },
+  CHALLENGE: { label: 'Desafíos', icon: 'target', unit: ['desafío', 'desafíos'] },
+  SOCIAL: { label: 'Social', icon: 'handshake', unit: ['mutual', 'mutuals'] },
+  MONTHLY_MEDAL: { label: 'Medallas', icon: 'medal', unit: ['mes', 'meses'] },
 }
 
 export const TYPE_ORDER = ['STREAK', 'PERSONAL_STREAK', 'CHALLENGE', 'SOCIAL', 'MONTHLY_MEDAL']

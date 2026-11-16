@@ -8,6 +8,7 @@ import Button from '../../../../components/common/Button'
 import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Textarea from '../../../../components/common/Textarea'
 import './SubmitChallengeForm.css'
+import Icon from '../../../../components/common/Icon'
 
 export default function SubmitChallengeForm({ challenge, onSubmitted }) {
   const { template } = challenge
@@ -62,7 +63,7 @@ export default function SubmitChallengeForm({ challenge, onSubmitted }) {
 
       {template.requiresPresence && (
         <p className="submit-challenge__notice">
-          📍 Este desafío es en persona: antes de responder, hagan un{' '}
+          <Icon name="pin" size={16} /> Este desafío es en persona: antes de responder, hagan un{' '}
           <Link to={ROUTES.STREAKS_CHECK_IN}>check-in juntos</Link> hoy.
         </p>
       )}
@@ -87,7 +88,7 @@ export default function SubmitChallengeForm({ challenge, onSubmitted }) {
         </div>
       ) : (
         <Button variant="secondary" onClick={() => fileRef.current?.click()}>
-          📷 {template.requiresPhoto ? 'Agregar foto (obligatoria)' : 'Agregar foto (opcional)'}
+          <Icon name="camera" size={18} /> {template.requiresPhoto ? 'Agregar foto (obligatoria)' : 'Agregar foto (opcional)'}
         </Button>
       )}
       <input

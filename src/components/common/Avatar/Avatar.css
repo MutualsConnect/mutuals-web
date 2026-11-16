@@ -1,5 +1,6 @@
 .avatar { border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+/* Como el mobile: círculo durazno con iniciales oscuras */
 .avatar--fallback {
   display: inline-flex; align-items: center; justify-content: center;
-  background: var(--color-primary-soft); color: var(--color-primary); font-weight: 700;
+  background: var(--peach); color: var(--on-accent); font-weight: 800;
 }

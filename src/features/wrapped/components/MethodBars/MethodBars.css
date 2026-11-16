@@ -1,6 +1,6 @@
 .method-bars { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; width: 100%; }
 .method-bars li { display: grid; grid-template-columns: 120px 1fr auto; align-items: center; gap: 10px; }
-.method-bars__label { font-size: 0.9rem; font-weight: 600; }
+.method-bars__label { display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 700; }
 .method-bars__track { height: 12px; border-radius: 999px; background: rgba(255, 255, 255, 0.25); overflow: hidden; }
-.method-bars__fill { display: block; height: 100%; border-radius: inherit; background: #fff; }
+.method-bars__fill { display: block; height: 100%; border-radius: inherit; background: var(--sky); }
 .method-bars__count { min-width: 32px; text-align: right; }

@@ -7,6 +7,7 @@ import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Loader from '../../../../components/common/Loader'
 import Modal from '../../../../components/common/Modal'
 import Select from '../../../../components/common/Select'
+import Icon from '../../../../components/common/Icon'
 
 // Regalar 1 escudo a un mutual. Si se pasa `friend`, no se muestra el selector.
 export default function GiftShieldModal({ open, onClose, shields, friend, onGifted }) {
@@ -50,7 +51,7 @@ export default function GiftShieldModal({ open, onClose, shields, friend, onGift
             Cancelar
           </Button>
           <Button onClick={send} loading={sending} disabled={!selectedId || shields < 1}>
-            Regalar 🛡️
+            <Icon name="shield" size={16} /> Regalar
           </Button>
         </>
       }

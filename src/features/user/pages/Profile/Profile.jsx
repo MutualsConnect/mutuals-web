@@ -14,6 +14,7 @@ import ReportModal from '../../../social/components/ReportModal'
 import GiftShieldModal from '../../../wallet/components/GiftShieldModal'
 import ProfileAchievements from '../../../achievements/components/ProfileAchievements'
 import '../../components/UserPage.css'
+import Icon from '../../../../components/common/Icon'
 
 // /profile → mi perfil. /u/:username → perfil de otra persona (o el mío si es mi username).
 export default function Profile() {
@@ -61,7 +62,7 @@ export default function Profile() {
               Editar perfil
             </Link>
             <Link to={ROUTES.WRAPPED} className="btn btn--secondary btn--md">
-              🎁 Mi Wrapped
+              <Icon name="gift" size={16} /> Mi Wrapped
             </Link>
             <Link to={ROUTES.SETTINGS} className="btn btn--secondary btn--md">
               Configuración
@@ -78,7 +79,7 @@ export default function Profile() {
             />
             {profile.followedByMe && profile.followsMe && (
               <Button variant="secondary" onClick={() => setGiftOpen(true)}>
-                Regalar escudo 🛡️
+                <Icon name="shield" size={16} /> Regalar escudo
               </Button>
             )}
             <BlockButton user={profile} onBlocked={() => navigate(ROUTES.BLOCKS)} />
@@ -102,7 +103,7 @@ export default function Profile() {
           friend={profile}
           onGifted={(wallet) => {
             setUser((u) => ({ ...u, gems: wallet.gems, shields: wallet.shields }))
-            setNotice(`Le regalaste un escudo a ${profile.displayName} 🛡️`)
+            setNotice(`Le regalaste un escudo a ${profile.displayName}.`)
           }}
         />
       )}

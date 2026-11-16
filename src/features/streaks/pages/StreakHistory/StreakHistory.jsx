@@ -12,6 +12,7 @@ import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Loader from '../../../../components/common/Loader'
 import '../../components/StreakPage.css'
 import './StreakHistory.css'
+import Icon from '../../../../components/common/Icon'
 
 export default function StreakHistory() {
   const { data: history, loading, error, run: reload } = useAsync(
@@ -44,7 +45,7 @@ export default function StreakHistory() {
                 <div className="streak-history__who">
                   <strong>{entry.friend.displayName}</strong>
                   <span>
-                    {pluralize(entry.totalStreaks, 'racha')} · mejor: 🔥 {entry.bestLength}
+                    {pluralize(entry.totalStreaks, 'racha')} · mejor: {entry.bestLength} días
                   </span>
                 </div>
                 {!entry.currentlyMutual && <Badge>Ya no son mutuals</Badge>}
@@ -53,7 +54,7 @@ export default function StreakHistory() {
                 {entry.streaks.map((s) => (
                   <li key={s.id}>
                     <Link to={`/streaks/${s.id}`} className="streak-history__row">
-                      <span>🔥 {s.currentLength}</span>
+                      <span className="icon-text"><Icon name="flame" size={16} filled /> {s.currentLength}</span>
                       <span className="streak-history__dates">
                         {formatLocalDate(s.startDate)}
                         {s.endDate ? ` – ${formatLocalDate(s.endDate)}` : ' – hoy'}

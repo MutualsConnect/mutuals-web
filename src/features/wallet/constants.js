@@ -2,7 +2,8 @@
 export const MIN_SHIELD_PURCHASE = 1
 export const MAX_SHIELD_PURCHASE = 5
 
-export const CURRENCY_ICONS = { GEM: '💎', SHIELD: '🛡️' }
+// Nombres de <Icon>
+export const CURRENCY_ICONS = { GEM: 'gem', SHIELD: 'shield' }
 export const CURRENCY_NAMES = { GEM: ['gema', 'gemas'], SHIELD: ['escudo', 'escudos'] }
 
 // Enum WalletTransactionType

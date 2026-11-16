@@ -2,6 +2,7 @@ import { resolveMediaUrl } from '../../../../utils/media'
 import { formatRelativeTime } from '../../../../utils/format'
 import Avatar from '../../../../components/common/Avatar'
 import './SubmissionCard.css'
+import Icon from '../../../../components/common/Icon'
 
 // La respuesta de una persona. Si todavía no se revela (revelación mutua), se muestra bloqueada.
 // submission puede ser null cuando esa persona aún no responde.
@@ -25,7 +26,7 @@ export default function SubmissionCard({ user, submission, isMe, waitingForFrien
         </p>
       ) : !submission.revealed && !isMe ? (
         <p className="submission-card__locked">
-          🔒 Ya respondió. Su respuesta se revela cuando completes la tuya.
+          <Icon name="lock" size={16} /> Ya respondió. Su respuesta se revela cuando completes la tuya.
         </p>
       ) : (
         <>

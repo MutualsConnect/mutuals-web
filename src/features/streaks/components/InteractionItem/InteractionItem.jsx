@@ -4,6 +4,7 @@ import Button from '../../../../components/common/Button'
 import { formatRelativeTime } from '../../../../utils/format'
 import { INTERACTION_METHOD_LABELS, INTERACTION_STATUS_LABELS } from '../../constants'
 import './InteractionItem.css'
+import Icon from '../../../../components/common/Icon'
 
 const STATUS_TONE = { PENDING: 'warning', CONFIRMED: 'success', EXPIRED: 'neutral', REJECTED: 'danger' }
 
@@ -26,7 +27,7 @@ export default function InteractionItem({ interaction, onConfirm, onReject, busy
           <Badge tone={STATUS_TONE[status]}>{INTERACTION_STATUS_LABELS[status] ?? status}</Badge>
           {isPending && expiresAt && <span>Vence {formatRelativeTime(expiresAt)}</span>}
           {confirmedAt && <span>{formatRelativeTime(confirmedAt)}</span>}
-          {status === 'CONFIRMED' && streakLength != null && <span>🔥 {streakLength}</span>}
+          {status === 'CONFIRMED' && streakLength != null && <span className="icon-text"><Icon name="flame" size={14} /> {streakLength}</span>}
         </div>
       </div>
       {isPending && (onConfirm || onReject) && (

@@ -102,15 +102,15 @@ export default function Metrics() {
           </div>
           <StatGrid
             stats={[
-              { label: 'Interacciones', value: s.interactions, icon: '🤝' },
-              { label: 'Usuarios activos', value: s.activeUsers, icon: '👥' },
-              { label: 'Mutuals activos', value: s.activeMutuals, icon: '💞' },
-              { label: 'Racha más larga', value: s.longestStreak, icon: '🔥' },
-              { label: 'Escudos regalados', value: s.shieldsGifted, icon: '🎁' },
+              { label: 'Interacciones', value: s.interactions, icon: 'handshake' },
+              { label: 'Usuarios activos', value: s.activeUsers, icon: 'users' },
+              { label: 'Mutuals activos', value: s.activeMutuals, icon: 'heart' },
+              { label: 'Racha más larga', value: s.longestStreak, icon: 'flame' },
+              { label: 'Escudos regalados', value: s.shieldsGifted, icon: 'gift' },
               {
                 label: s.mostActiveDay ? `Día más activo (${s.mostActiveDayInteractions})` : 'Día más activo',
                 value: s.mostActiveDay ? formatLocalDate(s.mostActiveDay, { day: 'numeric', month: 'short' }) : '—',
-                icon: '📅',
+                icon: 'calendar',
               },
             ]}
           />

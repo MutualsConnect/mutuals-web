@@ -19,6 +19,7 @@ import RegisterInteractionModal from '../../components/RegisterInteractionModal'
 import FriendChallenge from '../../../challenges/components/FriendChallenge'
 import '../../components/StreakPage.css'
 import './StreakDetail.css'
+import Icon from '../../../../components/common/Icon'
 
 export default function StreakDetail() {
   const { streakId } = useParams()
@@ -84,8 +85,8 @@ export default function StreakDetail() {
           ) : (
             <Badge tone="danger">Racha terminada</Badge>
           )}
-          {streak.pure && <Badge tone="primary">Racha pura ✨</Badge>}
-          {streak.shieldArmed && <Badge tone="primary">Escudo activo 🛡️</Badge>}
+          {streak.pure && <Badge tone="primary"><Icon name="sparkle" size={12} /> Racha pura</Badge>}
+          {streak.shieldArmed && <Badge tone="primary"><Icon name="shield" size={12} /> Escudo activo</Badge>}
         </div>
       </Card>
 

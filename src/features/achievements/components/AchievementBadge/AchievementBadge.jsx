@@ -2,6 +2,7 @@ import { resolveMediaUrl } from '../../../../utils/media'
 import { formatDate } from '../../../../utils/format'
 import { ACHIEVEMENT_TYPES, goalText } from '../../constants'
 import './AchievementBadge.css'
+import Icon from '../../../../components/common/Icon'
 
 // Un logro. compact: versión pequeña para el perfil.
 export default function AchievementBadge({ achievement, compact = false }) {
@@ -11,7 +12,7 @@ export default function AchievementBadge({ achievement, compact = false }) {
   const icon = iconUrl ? (
     <img src={resolveMediaUrl(iconUrl)} alt="" className="achievement__img" />
   ) : (
-    <span aria-hidden>{type?.icon ?? '🏆'}</span>
+    <Icon name={type?.icon ?? 'trophy'} size={compact ? 22 : 26} />
   )
 
   if (compact) {
@@ -25,7 +26,7 @@ export default function AchievementBadge({ achievement, compact = false }) {
 
   return (
     <div className={`achievement ${unlocked ? 'achievement--unlocked' : 'achievement--locked'}`}>
-      <span className="achievement__icon">{unlocked ? icon : '🔒'}</span>
+      <span className="achievement__icon">{unlocked ? icon : <Icon name="lock" size={22} />}</span>
       <div className="achievement__body">
         <strong className="achievement__name">{name}</strong>
         <span className="achievement__description">{description}</span>
@@ -36,7 +37,7 @@ export default function AchievementBadge({ achievement, compact = false }) {
         </span>
       </div>
       {rewardGems > 0 && (
-        <span className={`achievement__reward ${unlocked ? 'is-earned' : ''}`}>💎 {rewardGems}</span>
+        <span className={`achievement__reward ${unlocked ? 'is-earned' : ''}`}><Icon name="gem" size={14} /> {rewardGems}</span>
       )}
     </div>
   )

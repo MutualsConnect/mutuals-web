@@ -128,7 +128,7 @@ export default function Settings() {
               Dispositivos conectados
             </Link>
             <Link to={ROUTES.SUBSCRIPTION} className="settings-link">
-              {user.premium ? '✦ Mutuals Plus' : 'Pásate a Mutuals Plus'}
+              {user.premium ? 'Mutuals Plus' : 'Pásate a Mutuals Plus'}
             </Link>
           </SettingsSection>
         </>

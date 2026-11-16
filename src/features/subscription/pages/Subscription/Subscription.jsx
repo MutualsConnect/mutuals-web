@@ -13,6 +13,7 @@ import Loader from '../../../../components/common/Loader'
 import Modal from '../../../../components/common/Modal'
 import PlanComparison from '../../components/PlanComparison'
 import './Subscription.css'
+import Icon from '../../../../components/common/Icon'
 
 const fmt = (d) => formatDate(d, { day: 'numeric', month: 'long', year: 'numeric' })
 
@@ -34,7 +35,7 @@ export default function Subscription() {
     try {
       const next = await subscriptionService.subscribe(period)
       setData(next)
-      setNotice('¡Bienvenido a Mutuals Plus! Te regalamos un escudo de bienvenida 🛡️')
+      setNotice('¡Bienvenido a Mutuals Plus! Te regalamos un escudo de bienvenida.')
       refreshUser().catch(() => {}) // rol PREMIUM y escudo nuevo
     } catch (err) {
       setActionError(getErrorMessage(err, 'No se pudo activar Plus'))
@@ -79,7 +80,7 @@ export default function Subscription() {
         <div className="subscription-page__current-head">
           <div>
             <span className="subscription-page__label">Tu plan</span>
-            <h2 className="subscription-page__plan">{isPlus ? '✦ Plus' : 'Gratis'}</h2>
+            <h2 className="subscription-page__plan">{isPlus ? <><Icon name="crown" size={22} /> Plus</> : 'Gratis'}</h2>
           </div>
           {isPlus && <Badge tone={canceled ? 'warning' : 'success'}>{STATUS_LABELS[sub.status] ?? sub.status}</Badge>}
         </div>
@@ -97,7 +98,7 @@ export default function Subscription() {
         </p>
         <ul className="subscription-page__benefits">
           {sub.benefits.map((b) => (
-            <li key={b}>✓ {translateBenefit(b)}</li>
+            <li key={b} className="icon-text"><Icon name="check" size={16} /> {translateBenefit(b)}</li>
           ))}
         </ul>
 
@@ -127,7 +128,7 @@ export default function Subscription() {
             ))}
           </div>
           <Button fullWidth size="lg" onClick={subscribe} loading={busy}>
-            ✦ Activar Plus
+            <Icon name="crown" size={18} /> Activar Plus
           </Button>
           <p className="subscription-page__hint">
             El pago es simulado: no se cobra nada. Los escudos nunca se venden con dinero real.
