@@ -1,0 +1,16 @@
+.purchase-shields { display: flex; flex-direction: column; gap: 14px; }
+.purchase-shields__header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.purchase-shields__title { margin: 0; font-size: 1.1rem; }
+.purchase-shields__price { font-weight: 700; color: var(--color-text-muted); }
+.purchase-shields__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.purchase-shields__hint { margin: 0; font-size: 0.85rem; color: var(--color-text-muted); }
+.purchase-shields__notice { margin: 0; padding: 10px 14px; border-radius: var(--radius-md); background: var(--color-success-soft); color: var(--color-success); }
+
+.stepper { display: inline-flex; align-items: center; border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+.stepper__btn {
+  width: 40px; height: 40px;
+  border: none; background: var(--color-surface-hover); color: var(--color-text);
+  font-size: 1.25rem; cursor: pointer;
+}
+.stepper__btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.stepper__value { min-width: 64px; text-align: center; font-weight: 700; }

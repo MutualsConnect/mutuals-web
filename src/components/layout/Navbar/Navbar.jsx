@@ -38,8 +38,10 @@ export default function Navbar() {
       <div className="navbar__user">
         {user && (
           <>
-            <span className="navbar__stat" title="Gemas">💎 {user.gems}</span>
-            <span className="navbar__stat" title="Escudos">🛡️ {user.shields}</span>
+            <Link to={ROUTES.WALLET} className="navbar__wallet" title="Billetera">
+              <span className="navbar__stat">💎 {user.gems}</span>
+              <span className="navbar__stat">🛡️ {user.shields}</span>
+            </Link>
             <Link to={ROUTES.PROFILE} aria-label="Mi perfil">
               <Avatar src={user.avatarUrl} name={user.displayName} size={32} />
             </Link>

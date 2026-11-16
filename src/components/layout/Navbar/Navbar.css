@@ -12,6 +12,8 @@
 .navbar__link:hover { background: var(--color-surface-hover); }
 .navbar__link.active { color: var(--color-primary); background: var(--color-primary-soft); }
 .navbar__user { display: flex; align-items: center; gap: 12px; }
+.navbar__wallet { display: flex; gap: 10px; padding: 6px 10px; border-radius: var(--radius-md); color: var(--color-text); text-decoration: none; }
+.navbar__wallet:hover { background: var(--color-surface-hover); }
 .navbar__stat { font-size: 0.9rem; font-weight: 600; }
 .navbar__logout { border: none; background: none; color: var(--color-text-muted); cursor: pointer; }
 

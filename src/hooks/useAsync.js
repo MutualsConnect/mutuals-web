@@ -25,5 +25,7 @@ export function useAsync(asyncFn, deps = [], { immediate = true } = {}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps)
 
-  return { ...state, run, setData: (data) => setState((s) => ({ ...s, data })) }
+  const setData = useCallback((data) => setState((s) => ({ ...s, data })), [])
+
+  return { ...state, run, setData }
 }

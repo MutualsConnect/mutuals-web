@@ -25,6 +25,8 @@ export const ROUTES = {
   ACHIEVEMENTS: '/achievements',
   TIMELINE: '/timeline',
   WALLET: '/wallet',
+  WALLET_TRANSACTIONS: '/wallet/transactions',
+  WALLET_SHIELDS: '/wallet/shields',
   AVATAR: '/avatar',
   NOTIFICATIONS: '/notifications',
   SUBSCRIPTION: '/subscription',

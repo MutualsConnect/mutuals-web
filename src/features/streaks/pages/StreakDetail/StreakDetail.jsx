@@ -166,7 +166,12 @@ export default function StreakDetail() {
         </p>
         <p style={{ marginBottom: 0 }}>
           Tienes <strong>{pluralize(user?.shields ?? 0, 'escudo')}</strong>.
-          {!user?.shields && ' Puedes comprar más en tu billetera.'}
+          {!user?.shields && (
+            <>
+              {' '}
+              <Link to={ROUTES.WALLET_SHIELDS}>Comprar escudos</Link>
+            </>
+          )}
         </p>
       </Modal>
     </section>

@@ -11,12 +11,13 @@ import ProfileHeader from '../../components/ProfileHeader'
 import FollowButton from '../../../social/components/FollowButton'
 import BlockButton from '../../../social/components/BlockButton'
 import ReportModal from '../../../social/components/ReportModal'
+import GiftShieldModal from '../../../wallet/components/GiftShieldModal'
 import '../../components/UserPage.css'
 
 // /profile → mi perfil. /u/:username → perfil de otra persona (o el mío si es mi username).
 export default function Profile() {
   const { username } = useParams()
-  const { user: me } = useAuth()
+  const { user: me, setUser } = useAuth()
   const navigate = useNavigate()
   const isMe = !username || username.toLowerCase() === me?.username
 
@@ -25,6 +26,8 @@ export default function Profile() {
     [username, isMe],
   )
   const [reportOpen, setReportOpen] = useState(false)
+  const [giftOpen, setGiftOpen] = useState(false)
+  const [notice, setNotice] = useState('')
 
   if (loading) return <Loader />
   if (error) {
@@ -69,6 +72,11 @@ export default function Profile() {
               followsMe={profile.followsMe}
               onChange={onFollowChange}
             />
+            {profile.followedByMe && profile.followsMe && (
+              <Button variant="secondary" onClick={() => setGiftOpen(true)}>
+                Regalar escudo 🛡️
+              </Button>
+            )}
             <BlockButton user={profile} onBlocked={() => navigate(ROUTES.BLOCKS)} />
             <Button variant="ghost" onClick={() => setReportOpen(true)}>
               Reportar
@@ -77,7 +85,21 @@ export default function Profile() {
         )}
       </ProfileHeader>
 
+      {notice && <p className="user-page__notice">{notice}</p>}
+
       <ReportModal open={reportOpen} onClose={() => setReportOpen(false)} user={profile} />
+      {!isMe && (
+        <GiftShieldModal
+          open={giftOpen}
+          onClose={() => setGiftOpen(false)}
+          shields={me.shields}
+          friend={profile}
+          onGifted={(wallet) => {
+            setUser((u) => ({ ...u, gems: wallet.gems, shields: wallet.shields }))
+            setNotice(`Le regalaste un escudo a ${profile.displayName} 🛡️`)
+          }}
+        />
+      )}
     </section>
   )
 }
