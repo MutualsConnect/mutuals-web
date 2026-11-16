@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { activityService } from '../../services/activityService'
 import { usePaginated } from '../../../../hooks/usePaginated'
+import { useAuth } from '../../../../hooks/useAuth'
+import { adminService } from '../../../admin/services/adminService'
 import { profilePath } from '../../../../constants/routes'
 import { getErrorMessage } from '../../../../utils/errors'
 import { formatRelativeTime } from '../../../../utils/format'
@@ -13,10 +15,22 @@ import Loader from '../../../../components/common/Loader'
 import './CommentsSection.css'
 
 export default function CommentsSection({ activity, onCommented }) {
+  const { isAdmin } = useAuth()
   const comments = usePaginated((page) => activityService.getComments(activity.id, page), [activity.id])
   const [content, setContent] = useState('')
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
+
+  // Moderación: solo ADMIN
+  const hide = async (comment) => {
+    setError('')
+    try {
+      await adminService.hideComment(comment.id)
+      comments.setItems((items) => items.filter((c) => c.id !== comment.id))
+    } catch (err) {
+      setError(getErrorMessage(err, 'No se pudo ocultar el comentario'))
+    }
+  }
 
   const send = async (e) => {
     e.preventDefault()
@@ -56,6 +70,11 @@ export default function CommentsSection({ activity, onCommented }) {
                       {c.author.displayName}
                     </Link>
                     <span>{formatRelativeTime(c.createdAt)}</span>
+                    {isAdmin && (
+                      <button type="button" className="comments__hide" onClick={() => hide(c)}>
+                        Ocultar
+                      </button>
+                    )}
                   </div>
                   <p className="comments__content">{c.content}</p>
                 </div>

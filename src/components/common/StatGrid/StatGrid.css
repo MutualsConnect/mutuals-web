@@ -1,0 +1,14 @@
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.stat-grid__item {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+.stat-grid__item--warning { border-color: var(--color-warning); background: var(--color-warning-soft); }
+.stat-grid__item--danger { border-color: var(--color-danger); background: var(--color-danger-soft); }
+.stat-grid__item--primary { border-color: var(--color-primary); background: var(--color-primary-soft); }
+.stat-grid__icon { font-size: 1.25rem; }
+.stat-grid__value { font-size: 1.5rem; line-height: 1.2; }
+.stat-grid__label { font-size: 0.8rem; color: var(--color-text-muted); }

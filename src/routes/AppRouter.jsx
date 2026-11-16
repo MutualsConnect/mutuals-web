@@ -35,6 +35,11 @@ import ChallengeDetail from '../features/challenges/pages/ChallengeDetail'
 import Timeline from '../features/activity/pages/Timeline'
 import Achievements from '../features/achievements/pages/Achievements'
 import Subscription from '../features/subscription/pages/Subscription'
+import AdminDashboard from '../features/admin/pages/Dashboard'
+import AdminUsers from '../features/admin/pages/Users'
+import AdminReports from '../features/admin/pages/Reports'
+import AdminChallengeTemplates from '../features/admin/pages/ChallengeTemplates'
+import AdminMetrics from '../features/admin/pages/Metrics'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
@@ -108,7 +113,11 @@ export default function AppRouter() {
 
           <Route element={<AdminRoute />}>
             <Route path={ROUTES.ADMIN} element={<AdminLayout />}>
-              {/* TODO: agregar las páginas de features/admin */}
+              <Route index element={<AdminDashboard />} />
+              <Route path={ROUTES.ADMIN_USERS} element={<AdminUsers />} />
+              <Route path={ROUTES.ADMIN_REPORTS} element={<AdminReports />} />
+              <Route path={ROUTES.ADMIN_CHALLENGE_TEMPLATES} element={<AdminChallengeTemplates />} />
+              <Route path={ROUTES.ADMIN_METRICS} element={<AdminMetrics />} />
             </Route>
           </Route>
         </Route>

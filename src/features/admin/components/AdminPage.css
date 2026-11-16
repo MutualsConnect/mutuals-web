@@ -1,0 +1,10 @@
+.admin-page { display: flex; flex-direction: column; gap: 18px; max-width: 960px; }
+.admin-page__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.admin-page__title { margin: 0; font-size: 1.5rem; }
+.admin-page__subtitle { margin: 4px 0 0; color: var(--color-text-muted); }
+.admin-page__section-title { margin: 0 0 10px; font-size: 1.1rem; }
+.admin-page__notice { margin: 0; padding: 10px 14px; border-radius: var(--radius-md); background: var(--color-success-soft); color: var(--color-success); }
+.admin-page__list { display: flex; flex-direction: column; gap: 10px; }
+.admin-page__row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.admin-page__muted { margin: 0; font-size: 0.85rem; color: var(--color-text-muted); }
+.admin-page__actions { display: flex; gap: 8px; flex-wrap: wrap; }
