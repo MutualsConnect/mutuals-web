@@ -28,6 +28,8 @@ import Blocks from '../features/social/pages/Blocks'
 import Wallet from '../features/wallet/pages/Wallet'
 import Transactions from '../features/wallet/pages/Transactions'
 import Shields from '../features/wallet/pages/Shields'
+import Notifications from '../features/notifications/pages/Notifications'
+import UserRedirect from '../features/user/pages/UserRedirect'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
@@ -73,13 +75,17 @@ export default function AppRouter() {
             <Route path={ROUTES.USER_PROFILE} element={<Profile />} />
             <Route path={ROUTES.USER_FOLLOWERS} element={<Followers />} />
             <Route path={ROUTES.USER_FOLLOWING} element={<Following />} />
+            <Route path={ROUTES.USER_BY_ID} element={<UserRedirect />} />
+
+            {/* Notificaciones */}
+            <Route path={ROUTES.NOTIFICATIONS} element={<Notifications />} />
 
             {/* Billetera */}
             <Route path={ROUTES.WALLET} element={<Wallet />} />
             <Route path={ROUTES.WALLET_TRANSACTIONS} element={<Transactions />} />
             <Route path={ROUTES.WALLET_SHIELDS} element={<Shields />} />
 
-            {/* TODO: agregar las páginas de las demás features (retos, notificaciones...) */}
+            {/* TODO: agregar las páginas de las demás features (retos, actividad...) */}
           </Route>
 
           <Route element={<AdminRoute />}>

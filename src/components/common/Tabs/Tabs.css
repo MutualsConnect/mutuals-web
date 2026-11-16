@@ -5,4 +5,8 @@
   background: transparent; color: var(--color-text-muted);
   font-weight: 600; cursor: pointer;
 }
+.tabs__tab { white-space: nowrap; }
+@media (max-width: 480px) {
+  .tabs__tab { padding: 8px 6px; font-size: 0.875rem; }
+}
 .tabs__tab--active { background: var(--color-surface); color: var(--color-text); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); }

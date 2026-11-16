@@ -2,6 +2,8 @@ import { Link, NavLink } from 'react-router-dom'
 import { useAuth } from '../../../hooks/useAuth'
 import { ROUTES } from '../../../constants/routes'
 import Avatar from '../../common/Avatar'
+import UnreadBadge from '../../../features/notifications/components/UnreadBadge'
+import { useNotifications } from '../../../hooks/useNotifications'
 import './Navbar.css'
 
 const LINKS = [
@@ -15,6 +17,7 @@ const LINKS = [
 
 export default function Navbar() {
   const { user, isAdmin, logout } = useAuth()
+  const { unread } = useNotifications()
 
   return (
     <header className="navbar">
@@ -26,6 +29,7 @@ export default function Navbar() {
         {LINKS.map((link) => (
           <NavLink key={link.to} to={link.to} end={link.end} className="navbar__link">
             {link.label}
+            {link.to === ROUTES.NOTIFICATIONS && <UnreadBadge count={unread.total} />}
           </NavLink>
         ))}
         {isAdmin && (

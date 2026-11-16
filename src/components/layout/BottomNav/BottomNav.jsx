@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { ROUTES } from '../../../constants/routes'
+import { useNotifications } from '../../../hooks/useNotifications'
+import UnreadBadge from '../../../features/notifications/components/UnreadBadge'
 import './BottomNav.css'
 
 // Navegación inferior para móvil
@@ -12,11 +14,19 @@ const ITEMS = [
 ]
 
 export default function BottomNav() {
+  const { unread } = useNotifications()
   return (
     <nav className="bottom-nav">
       {ITEMS.map((item) => (
         <NavLink key={item.to} to={item.to} end={item.end} className="bottom-nav__item">
-          <span aria-hidden>{item.icon}</span>
+          <span className="bottom-nav__icon" aria-hidden>
+            {item.icon}
+            {item.to === ROUTES.NOTIFICATIONS && (
+              <span className="bottom-nav__badge">
+                <UnreadBadge count={unread.total} dot />
+              </span>
+            )}
+          </span>
           <span className="bottom-nav__label">{item.label}</span>
         </NavLink>
       ))}

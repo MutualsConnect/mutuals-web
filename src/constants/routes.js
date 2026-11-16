@@ -8,6 +8,7 @@ export const ROUTES = {
   PROFILE: '/profile',
   EDIT_PROFILE: '/profile/edit',
   USER_PROFILE: '/u/:username',
+  USER_BY_ID: '/users/:userId',
   USER_FOLLOWERS: '/u/:username/followers',
   USER_FOLLOWING: '/u/:username/following',
   SETTINGS: '/settings',

@@ -1,0 +1,24 @@
+.notification-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.notification-item {
+  width: 100%;
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-align: left; cursor: pointer;
+}
+.notification-item:hover { background: var(--color-surface-hover); }
+.notification-item--unread { border-color: var(--color-primary); background: var(--color-primary-soft); }
+.notification-item__icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; background: var(--color-surface); font-size: 1.2rem;
+}
+.notification-item__body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.notification-item__title { font-weight: 600; }
+.notification-item--unread .notification-item__title { font-weight: 700; }
+.notification-item__text { font-size: 0.875rem; color: var(--color-text-muted); }
+.notification-item__time { font-size: 0.75rem; color: var(--color-text-muted); }
+.notification-item__dot { width: 10px; height: 10px; margin-top: 6px; flex-shrink: 0; border-radius: 50%; background: var(--color-primary); }
