@@ -1,0 +1,27 @@
+export const ROUTES = {
+  HOME: '/',
+  LOGIN: '/login',
+  REGISTER: '/register',
+  FORGOT_PASSWORD: '/forgot-password',
+  RESET_PASSWORD: '/reset-password',
+
+  PROFILE: '/profile',
+  EDIT_PROFILE: '/profile/edit',
+  SETTINGS: '/settings',
+  SEARCH: '/search',
+  STREAKS: '/streaks',
+  CHALLENGES: '/challenges',
+  ACHIEVEMENTS: '/achievements',
+  TIMELINE: '/timeline',
+  WALLET: '/wallet',
+  AVATAR: '/avatar',
+  NOTIFICATIONS: '/notifications',
+  SUBSCRIPTION: '/subscription',
+  WRAPPED: '/wrapped',
+
+  ADMIN: '/admin',
+  ADMIN_USERS: '/admin/users',
+  ADMIN_REPORTS: '/admin/reports',
+  ADMIN_CHALLENGE_TEMPLATES: '/admin/challenge-templates',
+  ADMIN_METRICS: '/admin/metrics',
+}

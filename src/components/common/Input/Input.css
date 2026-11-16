@@ -1,0 +1,14 @@
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field__label { font-size: 0.875rem; font-weight: 600; }
+.field__input {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1rem;
+}
+.field__input:focus { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+.field__input--error { border-color: var(--color-danger); }
+.field__error { margin: 0; font-size: 0.8rem; color: var(--color-danger); }
+.field__hint { margin: 0; font-size: 0.8rem; color: var(--color-text-muted); }
