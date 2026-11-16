@@ -52,6 +52,12 @@ export function AuthProvider({ children }) {
     }
   }, [])
 
+  // Cierra la sesión solo en el navegador (por ejemplo, después de eliminar la cuenta)
+  const clearSession = useCallback(() => {
+    tokenStorage.clear()
+    setUser(null)
+  }, [])
+
   const refreshUser = useCallback(async () => {
     const me = await authService.getMe()
     setUser(me)
@@ -67,10 +73,11 @@ export function AuthProvider({ children }) {
       login,
       register,
       logout,
+      clearSession,
       refreshUser,
       setUser,
     }),
-    [user, loading, login, register, logout, refreshUser],
+    [user, loading, login, register, logout, clearSession, refreshUser],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

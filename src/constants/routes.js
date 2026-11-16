@@ -7,8 +7,14 @@ export const ROUTES = {
 
   PROFILE: '/profile',
   EDIT_PROFILE: '/profile/edit',
+  USER_PROFILE: '/u/:username',
+  USER_FOLLOWERS: '/u/:username/followers',
+  USER_FOLLOWING: '/u/:username/following',
   SETTINGS: '/settings',
+  DEVICES: '/settings/devices',
+  BLOCKS: '/settings/blocks',
   SEARCH: '/search',
+  MUTUALS: '/mutuals',
   STREAKS: '/streaks',
   STREAK_DETAIL: '/streaks/:streakId',
   STREAKS_INVITATIONS: '/streaks/invitations',
@@ -30,3 +36,9 @@ export const ROUTES = {
   ADMIN_CHALLENGE_TEMPLATES: '/admin/challenge-templates',
   ADMIN_METRICS: '/admin/metrics',
 }
+
+// Helpers para armar rutas con parámetros
+export const profilePath = (username) => `/u/${encodeURIComponent(username)}`
+export const followersPath = (username) => `${profilePath(username)}/followers`
+export const followingPath = (username) => `${profilePath(username)}/following`
+export const streakPath = (streakId) => `/streaks/${streakId}`

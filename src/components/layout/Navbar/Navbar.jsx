@@ -7,6 +7,7 @@ import './Navbar.css'
 const LINKS = [
   { to: ROUTES.HOME, label: 'Inicio', end: true },
   { to: ROUTES.STREAKS, label: 'Rachas' },
+  { to: ROUTES.SEARCH, label: 'Buscar' },
   { to: ROUTES.CHALLENGES, label: 'Retos' },
   { to: ROUTES.TIMELINE, label: 'Actividad' },
   { to: ROUTES.NOTIFICATIONS, label: 'Notificaciones' },

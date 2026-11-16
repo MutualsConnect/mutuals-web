@@ -1,0 +1,13 @@
+.user-list-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.user-list-item__link { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; color: var(--color-text); text-decoration: none; }
+.user-list-item__text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.user-list-item__name { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.user-list-item__username { font-size: 0.85rem; color: var(--color-text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.user-list-item__streak { font-weight: 700; color: var(--color-streak); white-space: nowrap; }
+.user-list-item__action { flex-shrink: 0; }

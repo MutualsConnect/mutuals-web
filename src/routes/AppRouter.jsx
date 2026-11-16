@@ -16,6 +16,15 @@ import StreakHistory from '../features/streaks/pages/StreakHistory'
 import Invitations from '../features/streaks/pages/Invitations'
 import PendingInteractions from '../features/streaks/pages/PendingInteractions'
 import CheckIn from '../features/streaks/pages/CheckIn'
+import Profile from '../features/user/pages/Profile'
+import EditProfile from '../features/user/pages/EditProfile'
+import Settings from '../features/user/pages/Settings'
+import Devices from '../features/user/pages/Devices'
+import Search from '../features/social/pages/Search'
+import Followers from '../features/social/pages/Followers'
+import Following from '../features/social/pages/Following'
+import Mutuals from '../features/social/pages/Mutuals'
+import Blocks from '../features/social/pages/Blocks'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
@@ -48,7 +57,21 @@ export default function AppRouter() {
             <Route path={ROUTES.STREAKS_HISTORY} element={<StreakHistory />} />
             <Route path={ROUTES.STREAK_DETAIL} element={<StreakDetail />} />
 
-            {/* TODO: agregar las páginas de las demás features (perfil, retos...) */}
+            {/* Perfil y configuración */}
+            <Route path={ROUTES.PROFILE} element={<Profile />} />
+            <Route path={ROUTES.EDIT_PROFILE} element={<EditProfile />} />
+            <Route path={ROUTES.SETTINGS} element={<Settings />} />
+            <Route path={ROUTES.DEVICES} element={<Devices />} />
+            <Route path={ROUTES.BLOCKS} element={<Blocks />} />
+
+            {/* Social */}
+            <Route path={ROUTES.SEARCH} element={<Search />} />
+            <Route path={ROUTES.MUTUALS} element={<Mutuals />} />
+            <Route path={ROUTES.USER_PROFILE} element={<Profile />} />
+            <Route path={ROUTES.USER_FOLLOWERS} element={<Followers />} />
+            <Route path={ROUTES.USER_FOLLOWING} element={<Following />} />
+
+            {/* TODO: agregar las páginas de las demás features (retos, billetera...) */}
           </Route>
 
           <Route element={<AdminRoute />}>

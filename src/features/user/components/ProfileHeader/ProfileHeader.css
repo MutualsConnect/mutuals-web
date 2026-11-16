@@ -1,0 +1,20 @@
+.profile-header { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 28px 20px; text-align: center; }
+.profile-header__names { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.profile-header__name { margin: 0; font-size: 1.5rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.profile-header__plus { font-size: 0.75rem; padding: 2px 8px; border-radius: 999px; background: var(--color-primary); color: var(--color-on-primary); }
+.profile-header__username { color: var(--color-text-muted); }
+.profile-header__badges { display: flex; gap: 6px; margin-top: 4px; }
+.profile-header__bio { margin: 0; max-width: 480px; white-space: pre-line; }
+.profile-header__stats { display: flex; gap: 28px; }
+.profile-header__stat { display: flex; flex-direction: column; align-items: center; color: var(--color-text); text-decoration: none; }
+.profile-header__stat strong { font-size: 1.15rem; }
+.profile-header__stat span { font-size: 0.8rem; color: var(--color-text-muted); }
+a.profile-header__stat:hover span { text-decoration: underline; }
+.profile-header__streaks { display: flex; gap: 12px; width: 100%; max-width: 360px; }
+.profile-header__streaks > div {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 10px; border-radius: var(--radius-md); background: var(--color-surface-hover);
+}
+.profile-header__streaks span { font-size: 0.8rem; color: var(--color-text-muted); }
+.profile-header__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; }
+.profile-header__since { font-size: 0.8rem; color: var(--color-text-muted); }
