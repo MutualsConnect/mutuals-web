@@ -1,0 +1,5 @@
+.profile-achievements { display: flex; flex-direction: column; gap: 12px; }
+.profile-achievements__header { display: flex; align-items: center; justify-content: space-between; }
+.profile-achievements__title { margin: 0; font-size: 1.1rem; }
+.profile-achievements__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+.profile-achievements__empty { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); }

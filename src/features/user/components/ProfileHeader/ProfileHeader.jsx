@@ -47,10 +47,10 @@ export default function ProfileHeader({ profile, isMe = false, children }) {
           <strong>{formatNumber(profile.following)}</strong>
           <span>siguiendo</span>
         </Link>
-        <div className="profile-header__stat">
+        <a href="#logros" className="profile-header__stat">
           <strong>{formatNumber(profile.achievements)}</strong>
           <span>logros</span>
-        </div>
+        </a>
       </div>
 
       <div className="profile-header__streaks">

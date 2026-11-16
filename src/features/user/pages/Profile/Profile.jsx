@@ -12,6 +12,7 @@ import FollowButton from '../../../social/components/FollowButton'
 import BlockButton from '../../../social/components/BlockButton'
 import ReportModal from '../../../social/components/ReportModal'
 import GiftShieldModal from '../../../wallet/components/GiftShieldModal'
+import ProfileAchievements from '../../../achievements/components/ProfileAchievements'
 import '../../components/UserPage.css'
 
 // /profile → mi perfil. /u/:username → perfil de otra persona (o el mío si es mi username).
@@ -86,6 +87,8 @@ export default function Profile() {
       </ProfileHeader>
 
       {notice && <p className="user-page__notice">{notice}</p>}
+
+      <ProfileAchievements userId={profile.id} isMe={isMe} />
 
       <ReportModal open={reportOpen} onClose={() => setReportOpen(false)} user={profile} />
       {!isMe && (
