@@ -6,6 +6,9 @@ Frontend web de **Mutuals**, la red social de rachas que solo cuentan cuando los
 
 Curso CS2031 Desarrollo Basado en Plataformas, UTEC 2026-2.
 
+**Frontend desplegado:** <https://mutuals-web.vercel.app>
+**API desplegada (backend en AWS):** <http://3.144.115.104> · Swagger: <http://3.144.115.104/swagger-ui.html>
+
 ## Integrantes y participación
 
 | Integrante | Código | Principales aportes | Participación |
@@ -89,7 +92,7 @@ Otros comandos: `npm run build`, `npm run preview`, `npm run lint`.
 
 ## Despliegue
 
-Se despliega en **Vercel** desde este repositorio. `vercel.json` redirige todas las rutas a `index.html` para que
-funcione el router. Las variables `VITE_*` se configuran en el panel de Vercel y se aplican en cada build.
+Se despliega en **Vercel** desde este repositorio: <https://mutuals-web.vercel.app>. `vercel.json` redirige todas las rutas a `index.html` para que
+funcione el router y reenvía `/api` y `/uploads` al backend desplegado en AWS (EC2), de modo que el navegador solo habla HTTPS con Vercel. Las variables `VITE_*` se configuran en el panel de Vercel y se aplican en cada build.
 El origen de producción debe agregarse en *Orígenes autorizados de JavaScript* del cliente OAuth de Google y en
 `CORS_ALLOWED_ORIGINS` / `FRONTEND_URL` del backend.
