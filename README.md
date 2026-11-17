@@ -34,7 +34,7 @@ Curso CS2031 Desarrollo Basado en Plataformas, UTEC 2026-2.
 | Retos | Desafíos semanales con respuesta de texto o foto y revelación mutua |
 | Actividad | Feed con likes y comentarios |
 | Billetera | Gemas, escudos, tienda y movimientos |
-| Logros, Avatar, Notificaciones | Medallas, personalización y centro de notificaciones con contador |
+| Logros y notificaciones | Medallas desbloqueadas y destacadas, centro de notificaciones con contador |
 | Suscripción | Comparación Free vs Plus y aviso de límites del plan |
 | Wrapped | Resúmenes mensuales y anuales en formato de historias, Wrapped de siempre y de la plataforma |
 | Admin | Dashboard de métricas, usuarios, reportes y plantillas de desafíos |
@@ -59,6 +59,16 @@ src/
 
 Cada módulo de `features/` tiene su **service** (llamadas a la API), sus **hooks** (lógica) y sus
 **componentes** (UI), así las páginas solo combinan piezas.
+
+### Errores y feedback
+
+- **Error Boundary** global y por layout: si una pantalla falla, se muestra un aviso con "Reintentar" sin perder la
+  navegación.
+- **Mensajes en español** (`utils/errors.js`): traduce los mensajes del backend y responde según el código HTTP
+  (400, 401, 403, 404, 409, 413, 5xx), sin conexión y timeout. También traduce las validaciones de los formularios.
+- **Toasts** (`ToastProvider` + `useToast`) para confirmar acciones: seguir, invitar a una racha, comprar escudos,
+  guardar cambios, etc.
+- Loaders, estados vacíos con acción, botón "Reintentar" y botones deshabilitados durante cada petición.
 
 ## Cómo correrlo
 
