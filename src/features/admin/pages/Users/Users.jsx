@@ -8,6 +8,7 @@ import Input from '../../../../components/common/Input'
 import UserList from '../../../social/components/UserList'
 import SuspendUserModal from '../../components/SuspendUserModal'
 import '../../components/AdminPage.css'
+import { useToast } from '../../../../hooks/useToast'
 
 export default function Users() {
   const [query, setQuery] = useState('')
@@ -17,7 +18,7 @@ export default function Users() {
   })
   const [target, setTarget] = useState(null)
   const [reactivateId, setReactivateId] = useState('')
-  const [notice, setNotice] = useState('')
+  const toast = useToast()
 
   const onDone = (updated, status) => {
     setTarget(null)
@@ -25,9 +26,9 @@ export default function Users() {
     if (status === 'SUSPENDED') {
       // La búsqueda solo muestra cuentas activas
       results.setItems((items) => items.filter((u) => u.id !== updated.id))
-      setNotice(`@${updated.username} fue suspendido.`)
+      toast.success(`@${updated.username} fue suspendido.`)
     } else {
-      setNotice(`@${updated.username} fue reactivado.`)
+      toast.success(`@${updated.username} fue reactivado.`)
     }
   }
 
@@ -38,7 +39,6 @@ export default function Users() {
         <p className="admin-page__subtitle">Busca por nombre de usuario para suspender una cuenta.</p>
       </header>
 
-      {notice && <p className="admin-page__notice">{notice}</p>}
 
       <Input
         type="search"

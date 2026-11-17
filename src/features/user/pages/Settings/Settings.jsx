@@ -15,11 +15,13 @@ import Select from '../../../../components/common/Select'
 import Switch from '../../../../components/common/Switch'
 import SettingsSection from '../../components/SettingsSection'
 import '../../components/UserPage.css'
+import { useToast } from '../../../../hooks/useToast'
 
 // Versión del texto de consentimiento de ubicación que se guarda al activarla
 const LOCATION_CONSENT_VERSION = 'v1'
 
 export default function Settings() {
+  const toast = useToast()
   const { user, logout, clearSession } = useAuth()
   const navigate = useNavigate()
   const { data: prefs, loading, error, run: reload, setData } = useAsync(
@@ -41,6 +43,7 @@ export default function Settings() {
       const payload = { ...changes }
       if (changes.locationSharingEnabled) payload.locationConsentVersion = LOCATION_CONSENT_VERSION
       setData(await userService.updatePreferences(payload))
+      toast.success('Cambios guardados.')
     } catch (err) {
       setData(previous)
       setSaveError(getErrorMessage(err, 'No se pudo guardar el cambio'))

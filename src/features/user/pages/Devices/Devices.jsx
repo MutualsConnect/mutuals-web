@@ -13,11 +13,13 @@ import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Loader from '../../../../components/common/Loader'
 import '../../components/UserPage.css'
 import Icon from '../../../../components/common/Icon'
+import { useToast } from '../../../../hooks/useToast'
 
 const PLATFORM_ICONS = { ANDROID: 'android', IOS: 'phone', WEB: 'monitor' }
 
 // Dispositivos registrados para notificaciones push
 export default function Devices() {
+  const toast = useToast()
   const { data: devices, loading, error, run: reload, setData } = useAsync(
     () => userService.getDevices(),
     [],
@@ -31,6 +33,7 @@ export default function Devices() {
     try {
       await userService.deleteDevice(device.id)
       setData(devices.filter((d) => d.id !== device.id))
+      toast.success('Dispositivo eliminado.')
     } catch (err) {
       setActionError(getErrorMessage(err, 'No se pudo eliminar el dispositivo'))
     } finally {

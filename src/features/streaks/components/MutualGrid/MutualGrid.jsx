@@ -11,9 +11,11 @@ import MutualCard from '../MutualCard'
 import PlanLimitNotice from '../../../subscription/components/PlanLimitNotice'
 import { isPlanLimitError } from '../../../subscription/constants'
 import './MutualGrid.css'
+import { useToast } from '../../../../hooks/useToast'
 
 // Grid de mutuals con su racha. El backend ya los manda ordenados (primero los que vencen hoy).
 export default function MutualGrid() {
+  const toast = useToast()
   const { data: mutuals, loading, error, run: reload, setData } = useMutuals()
   const [invitingId, setInvitingId] = useState(null)
   const [actionError, setActionError] = useState('')
@@ -26,6 +28,7 @@ export default function MutualGrid() {
     try {
       await streakService.invite(friend.id)
       setData(mutuals.map((m) => (m.friend.id === friend.id ? { ...m, invitationPending: true } : m)))
+      toast.success(`Invitación de racha enviada a ${friend.displayName}.`)
     } catch (err) {
       if (isPlanLimitError(err)) setPlanLimit(err.response.data.details.limit)
       else setActionError(getErrorMessage(err, 'No se pudo enviar la invitación'))

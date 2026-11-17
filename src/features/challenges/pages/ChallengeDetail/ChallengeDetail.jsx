@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { challengeService } from '../../services/challengeService'
 import { useAsync } from '../../../../hooks/useAsync'
@@ -14,6 +13,7 @@ import SubmissionCard from '../../components/SubmissionCard'
 import SubmitChallengeForm from '../../components/SubmitChallengeForm'
 import '../../components/ChallengePage.css'
 import './ChallengeDetail.css'
+import { useToast } from '../../../../hooks/useToast'
 
 export default function ChallengeDetail() {
   const { challengeId } = useParams()
@@ -22,7 +22,7 @@ export default function ChallengeDetail() {
     () => challengeService.getById(challengeId),
     [challengeId],
   )
-  const [notice, setNotice] = useState('')
+  const toast = useToast()
 
   if (loading) return <Loader />
   if (error) return <ErrorMessage message={error} onRetry={reload} />
@@ -35,10 +35,10 @@ export default function ChallengeDetail() {
   const onSubmitted = (updated) => {
     setData(updated)
     if (updated.status === 'COMPLETED') {
-      setNotice(`¡Desafío completado! Ganaron ${template.rewardGems} gemas cada uno.`)
+      toast.success(`¡Desafío completado! Ganaron ${template.rewardGems} gemas cada uno.`)
       refreshUser().catch(() => {}) // actualiza las gemas
     } else {
-      setNotice(`Listo. Cuando ${friend.displayName} responda, verán las respuestas de los dos.`)
+      toast.success(`Listo. Cuando ${friend.displayName} responda, verán las respuestas de los dos.`)
     }
   }
 
@@ -63,7 +63,6 @@ export default function ChallengeDetail() {
         </span>
       </Card>
 
-      {notice && <p className="challenge-page__notice">{notice}</p>}
 
       {canSubmit && (
         <Card>

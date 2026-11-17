@@ -11,11 +11,12 @@ import BalanceCard from '../../components/BalanceCard'
 import GiftShieldModal from '../../components/GiftShieldModal'
 import PurchaseShields from '../../components/PurchaseShields'
 import '../../components/WalletPage.css'
+import { useToast } from '../../../../hooks/useToast'
 
 export default function Shields() {
   const { data: wallet, loading, error, run: reload, applyWallet } = useWallet()
   const [giftOpen, setGiftOpen] = useState(false)
-  const [notice, setNotice] = useState('')
+  const toast = useToast()
 
   if (loading) return <Loader />
   if (error) return <ErrorMessage message={error} onRetry={reload} />
@@ -31,7 +32,6 @@ export default function Shields() {
       </header>
 
       <BalanceCard gems={wallet.gems} shields={wallet.shields} />
-      {notice && <p className="wallet-page__notice">{notice}</p>}
 
       <PurchaseShields wallet={wallet} onPurchased={applyWallet} />
 
@@ -79,7 +79,7 @@ export default function Shields() {
         shields={wallet.shields}
         onGifted={(next, name) => {
           applyWallet(next)
-          setNotice(`Le regalaste un escudo a ${name}.`)
+          toast.success(`Le regalaste un escudo a ${name}.`)
         }}
       />
     </section>

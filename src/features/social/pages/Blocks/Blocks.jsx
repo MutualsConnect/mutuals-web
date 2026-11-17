@@ -8,8 +8,10 @@ import Button from '../../../../components/common/Button'
 import ErrorMessage from '../../../../components/common/ErrorMessage'
 import UserList from '../../components/UserList'
 import '../../../user/components/UserPage.css'
+import { useToast } from '../../../../hooks/useToast'
 
 export default function Blocks() {
+  const toast = useToast()
   const list = usePaginated((page) => socialService.getBlocks(page), [])
   const [busyId, setBusyId] = useState(null)
   const [actionError, setActionError] = useState('')
@@ -20,6 +22,7 @@ export default function Blocks() {
     try {
       await socialService.unblock(user.id)
       list.setItems(list.items.filter((u) => u.id !== user.id))
+      toast.success(`Desbloqueaste a ${user.displayName ?? 'esta persona'}.`)
     } catch (err) {
       setActionError(getErrorMessage(err, 'No se pudo desbloquear'))
     } finally {

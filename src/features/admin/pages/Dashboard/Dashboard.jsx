@@ -10,22 +10,22 @@ import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Loader from '../../../../components/common/Loader'
 import StatGrid from '../../../../components/common/StatGrid'
 import '../../components/AdminPage.css'
+import { useToast } from '../../../../hooks/useToast'
 
 export default function Dashboard() {
   const { data: m, loading, error, run: reload } = useAsync(() => adminService.getMetrics(), [])
   const [assigning, setAssigning] = useState(false)
-  const [notice, setNotice] = useState('')
+  const toast = useToast()
   const [actionError, setActionError] = useState('')
 
   const assign = async () => {
     setAssigning(true)
     setActionError('')
-    setNotice('')
     try {
       const res = await adminService.assignWeeklyChallenges()
       // El backend responde "N challenges assigned for this week"
       const count = res.message?.match(/\d+/)?.[0]
-      setNotice(count != null ? `Se asignaron ${count} desafíos para esta semana.` : res.message)
+      toast.success(count != null ? `Se asignaron ${count} desafíos para esta semana.` : res.message)
     } catch (err) {
       setActionError(getErrorMessage(err, 'No se pudieron asignar los desafíos'))
     } finally {
@@ -76,7 +76,6 @@ export default function Dashboard() {
 
       <Card>
         <h2 className="admin-page__section-title">Acciones</h2>
-        {notice && <p className="admin-page__notice">{notice}</p>}
         <ErrorMessage message={actionError} />
         <div className="admin-page__row" style={{ marginTop: 8 }}>
           <Button onClick={assign} loading={assigning}>

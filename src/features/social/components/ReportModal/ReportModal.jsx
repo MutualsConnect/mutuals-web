@@ -7,10 +7,12 @@ import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Modal from '../../../../components/common/Modal'
 import Select from '../../../../components/common/Select'
 import Textarea from '../../../../components/common/Textarea'
+import { useToast } from '../../../../hooks/useToast'
 
 const DESCRIPTION_MAX = 500
 
 export default function ReportModal({ open, onClose, user }) {
+  const toast = useToast()
   const [reason, setReason] = useState('')
   const [description, setDescription] = useState('')
   const [error, setError] = useState('')
@@ -32,6 +34,7 @@ export default function ReportModal({ open, onClose, user }) {
     try {
       await socialService.report({ reportedUserId: user.id, reason, description: description.trim() })
       setSent(true)
+      toast.success('Reporte enviado. Gracias por avisarnos.')
     } catch (err) {
       setError(getErrorMessage(err, 'No se pudo enviar el reporte'))
     } finally {

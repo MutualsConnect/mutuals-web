@@ -14,6 +14,7 @@ import GiftShieldModal from '../../components/GiftShieldModal'
 import TransactionItem from '../../components/TransactionItem'
 import '../../components/WalletPage.css'
 import '../../components/TransactionItem/TransactionItem.css'
+import { useToast } from '../../../../hooks/useToast'
 
 const RECENT_COUNT = 5
 
@@ -21,11 +22,11 @@ export default function Wallet() {
   const { data: wallet, loading, error, run: reload, applyWallet } = useWallet()
   const recent = useAsync(() => walletService.getTransactions(0, RECENT_COUNT), [])
   const [giftOpen, setGiftOpen] = useState(false)
-  const [notice, setNotice] = useState('')
+  const toast = useToast()
 
   const onGifted = (next, name) => {
     applyWallet(next)
-    setNotice(`Le regalaste un escudo a ${name}.`)
+    toast.success(`Le regalaste un escudo a ${name}.`)
     recent.run().catch(() => {})
   }
 
@@ -42,7 +43,6 @@ export default function Wallet() {
       </header>
 
       <BalanceCard gems={wallet.gems} shields={wallet.shields} />
-      {notice && <p className="wallet-page__notice">{notice}</p>}
 
       <div className="wallet-page__actions">
         <Link to={ROUTES.WALLET_SHIELDS} className="btn btn--primary btn--md">

@@ -4,9 +4,11 @@ import { getErrorMessage } from '../../../../utils/errors'
 import Button from '../../../../components/common/Button'
 import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Modal from '../../../../components/common/Modal'
+import { useToast } from '../../../../hooks/useToast'
 
 // Bloquear pide confirmación porque borra los follows y rompe la racha.
 export default function BlockButton({ user, onBlocked, size = 'md' }) {
+  const toast = useToast()
   const [open, setOpen] = useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
@@ -17,6 +19,7 @@ export default function BlockButton({ user, onBlocked, size = 'md' }) {
     try {
       await socialService.block(user.id)
       setOpen(false)
+      toast.success(`Bloqueaste a ${user.displayName ?? 'esta persona'}.`)
       onBlocked?.()
     } catch (err) {
       setError(getErrorMessage(err, 'No se pudo bloquear'))

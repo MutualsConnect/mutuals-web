@@ -1,8 +1,8 @@
-import { Outlet } from 'react-router-dom'
 import Navbar from '../../components/layout/Navbar'
 import Sidebar from '../../components/layout/Sidebar'
 import { ROUTES } from '../../constants/routes'
 import './AdminLayout.css'
+import { RouteOutlet } from '../../components/common/ErrorBoundary'
 
 const ADMIN_LINKS = [
   { to: ROUTES.ADMIN, label: 'Dashboard', end: true },
@@ -19,7 +19,7 @@ export default function AdminLayout() {
       <div className="admin-layout__body">
         <Sidebar title="Admin" items={ADMIN_LINKS} />
         <main className="admin-layout__content">
-          <Outlet />
+          <RouteOutlet />
         </main>
       </div>
     </div>

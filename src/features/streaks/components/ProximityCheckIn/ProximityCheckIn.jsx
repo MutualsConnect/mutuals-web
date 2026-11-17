@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { streakService } from '../../services/streakService'
 import { useMutuals } from '../../hooks/useMutuals'
-import { getErrorMessage } from '../../../../utils/errors'
+import { getErrorMessage, translateServerMessage } from '../../../../utils/errors'
 import Button from '../../../../components/common/Button'
 import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Loader from '../../../../components/common/Loader'
@@ -37,7 +37,7 @@ export default function ProximityCheckIn({ onCheckedIn }) {
       const position = await getPosition()
       const res = await streakService.checkInByProximity({ friendId: Number(friendId), ...position })
       if (res.status === 'CONFIRMED') onCheckedIn?.(res.interaction)
-      else setWaiting(res.message || 'Listo. Ahora tu amigo tiene que hacer lo mismo en menos de 2 minutos.')
+      else setWaiting(translateServerMessage(res.message) ?? 'Listo. Ahora tu amigo tiene que hacer lo mismo en menos de 2 minutos.')
     } catch (err) {
       setError(getErrorMessage(err))
     } finally {

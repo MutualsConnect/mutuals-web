@@ -1,6 +1,7 @@
-import { Link, Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './AuthLayout.css'
 import Icon from '../../components/common/Icon'
+import { RouteOutlet } from '../../components/common/ErrorBoundary'
 
 export default function AuthLayout() {
   return (
@@ -12,7 +13,7 @@ export default function AuthLayout() {
           </span>
           <h1 className="auth-layout__name">Mutuals</h1>
         </Link>
-        <Outlet />
+        <RouteOutlet />
       </div>
     </div>
   )

@@ -8,13 +8,14 @@ import Card from '../../../../components/common/Card'
 import ErrorMessage from '../../../../components/common/ErrorMessage'
 import './PurchaseShields.css'
 import Icon from '../../../../components/common/Icon'
+import { useToast } from '../../../../hooks/useToast'
 
 // Compra de escudos con gemas (nunca con dinero real)
 export default function PurchaseShields({ wallet, onPurchased }) {
   const [quantity, setQuantity] = useState(1)
   const [buying, setBuying] = useState(false)
   const [error, setError] = useState('')
-  const [notice, setNotice] = useState('')
+  const toast = useToast()
 
   const total = quantity * wallet.shieldPriceGems
   const canAfford = wallet.gems >= total
@@ -23,11 +24,10 @@ export default function PurchaseShields({ wallet, onPurchased }) {
   const buy = async () => {
     setBuying(true)
     setError('')
-    setNotice('')
     try {
       const next = await walletService.purchaseShields(quantity)
       onPurchased(next)
-      setNotice(`¡Listo! Compraste ${pluralize(quantity, 'escudo')}.`)
+      toast.success(`¡Listo! Compraste ${pluralize(quantity, 'escudo')}.`)
       setQuantity(1)
     } catch (err) {
       setError(getErrorMessage(err, 'No se pudo completar la compra'))
@@ -44,7 +44,6 @@ export default function PurchaseShields({ wallet, onPurchased }) {
       </div>
 
       <ErrorMessage message={error} />
-      {notice && <p className="purchase-shields__notice">{notice}</p>}
 
       <div className="purchase-shields__row">
         <div className="stepper" role="group" aria-label="Cantidad de escudos">

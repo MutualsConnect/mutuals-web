@@ -10,6 +10,7 @@ import Tabs from '../../../../components/common/Tabs'
 import TemplateFormModal from '../../components/TemplateFormModal'
 import TemplateItem from '../../components/TemplateItem'
 import '../../components/AdminPage.css'
+import { useToast } from '../../../../hooks/useToast'
 
 const FILTERS = [
   { value: 'active', label: 'Activas' },
@@ -23,7 +24,7 @@ export default function ChallengeTemplates() {
   const [editing, setEditing] = useState(undefined) // undefined: cerrado, null: nueva, objeto: editar
   const [busyId, setBusyId] = useState(null)
   const [actionError, setActionError] = useState('')
-  const [notice, setNotice] = useState('')
+  const toast = useToast()
 
   const visible = list.items.filter((t) =>
     filter === 'active' ? t.active : filter === 'inactive' ? !t.active : true,
@@ -32,7 +33,7 @@ export default function ChallengeTemplates() {
   const onSaved = (saved, wasEditing) => {
     setEditing(undefined)
     list.setItems((items) => (wasEditing ? items.map((t) => (t.id === saved.id ? saved : t)) : [saved, ...items]))
-    setNotice(wasEditing ? 'Plantilla actualizada.' : 'Plantilla creada.')
+    toast.success(wasEditing ? 'Plantilla actualizada.' : 'Plantilla creada.')
   }
 
   const deactivate = async (template) => {
@@ -41,7 +42,7 @@ export default function ChallengeTemplates() {
     try {
       await adminService.deactivateTemplate(template.id)
       list.setItems((items) => items.map((t) => (t.id === template.id ? { ...t, active: false } : t)))
-      setNotice(`"${template.title}" se desactivó. Ya no se asignará.`)
+      toast.success(`"${template.title}" se desactivó. Ya no se asignará.`)
     } catch (err) {
       setActionError(getErrorMessage(err, 'No se pudo desactivar'))
     } finally {
@@ -60,7 +61,6 @@ export default function ChallengeTemplates() {
       </header>
 
       <Tabs tabs={FILTERS} value={filter} onChange={setFilter} />
-      {notice && <p className="admin-page__notice">{notice}</p>}
       <ErrorMessage message={actionError} />
 
       {list.loading ? (

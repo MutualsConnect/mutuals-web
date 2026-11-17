@@ -10,9 +10,11 @@ import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Loader from '../../../../components/common/Loader'
 import InteractionItem from '../../components/InteractionItem'
 import '../../components/StreakPage.css'
+import { useToast } from '../../../../hooks/useToast'
 
 // Interacciones manuales que mis mutuals registraron y que debo confirmar o rechazar
 export default function PendingInteractions() {
+  const toast = useToast()
   const { refreshUser } = useAuth()
   const { data: interactions, loading, error, run: reload, setData } = useAsync(
     () => streakService.getPendingInteractions(),
@@ -31,6 +33,7 @@ export default function PendingInteractions() {
       setData(interactions.map((i) => (i.id === interaction.id ? updated : i)))
       // Confirmar suma a la racha personal
       if (confirm) refreshUser().catch(() => {})
+      toast.success(confirm ? '¡Interacción confirmada! Suma a su racha.' : 'Interacción rechazada.')
     } catch (err) {
       setActionError(getErrorMessage(err, 'No se pudo completar la acción'))
     } finally {

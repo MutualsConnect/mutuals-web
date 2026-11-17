@@ -4,11 +4,13 @@ import { getErrorMessage } from '../../../../utils/errors'
 import { pluralize } from '../../../../utils/format'
 import Button from '../../../../components/common/Button'
 import Modal from '../../../../components/common/Modal'
+import { useToast } from '../../../../hooks/useToast'
 
 // Seguir / dejar de seguir.
 // Si hay racha activa, el backend responde 409 con { streakId, currentLength }
 // y se pide confirmación antes de reintentar con confirmStreakLoss=true.
 export default function FollowButton({ userId, displayName, following, followsMe, onChange, size = 'md' }) {
+  const toast = useToast()
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [streakConflict, setStreakConflict] = useState(null)
@@ -19,6 +21,7 @@ export default function FollowButton({ userId, displayName, following, followsMe
     try {
       const res = await socialService.follow(userId)
       onChange?.({ following: true, mutual: res.mutual })
+      toast.success(res.mutual ? '¡Ahora son mutuals!' : 'Ahora sigues a esta persona.')
     } catch (err) {
       setError(getErrorMessage(err, 'No se pudo seguir'))
     } finally {
@@ -33,6 +36,7 @@ export default function FollowButton({ userId, displayName, following, followsMe
       await socialService.unfollow(userId, confirmStreakLoss)
       setStreakConflict(null)
       onChange?.({ following: false, mutual: false })
+      toast.info('Dejaste de seguir a esta persona.')
     } catch (err) {
       if (err.response?.status === 409) {
         setStreakConflict(err.response.data?.details ?? {})

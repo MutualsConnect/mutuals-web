@@ -12,6 +12,7 @@ import InvitationItem from '../../components/InvitationItem'
 import PlanLimitNotice from '../../../subscription/components/PlanLimitNotice'
 import { isPlanLimitError } from '../../../subscription/constants'
 import '../../components/StreakPage.css'
+import { useToast } from '../../../../hooks/useToast'
 
 const TABS = [
   { value: 'received', label: 'Recibidas' },
@@ -19,6 +20,7 @@ const TABS = [
 ]
 
 export default function Invitations() {
+  const toast = useToast()
   const [box, setBox] = useState('received')
   const { data: invitations, loading, error, run: reload, setData } = useAsync(
     () => streakService.getInvitations(box),
@@ -36,9 +38,11 @@ export default function Invitations() {
       if (action === 'cancel') {
         await streakService.cancelInvitation(invitation.id)
         setData(invitations.map((i) => (i.id === invitation.id ? { ...i, status: 'CANCELED' } : i)))
+        toast.info('Invitación cancelada.')
       } else {
         const updated = await streakService.respondInvitation(invitation.id, action === 'accept')
         setData(invitations.map((i) => (i.id === invitation.id ? updated : i)))
+        toast.success(action === 'accept' ? '¡Racha iniciada! Tienen un día de gracia para verse.' : 'Invitación rechazada.')
       }
     } catch (err) {
       if (isPlanLimitError(err)) setPlanLimit(err.response.data.details.limit)

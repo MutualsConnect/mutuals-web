@@ -14,6 +14,7 @@ import Modal from '../../../../components/common/Modal'
 import PlanComparison from '../../components/PlanComparison'
 import './Subscription.css'
 import Icon from '../../../../components/common/Icon'
+import { useToast } from '../../../../hooks/useToast'
 
 const fmt = (d) => formatDate(d, { day: 'numeric', month: 'long', year: 'numeric' })
 
@@ -26,7 +27,7 @@ export default function Subscription() {
   const [period, setPeriod] = useState('MONTHLY')
   const [busy, setBusy] = useState(false)
   const [actionError, setActionError] = useState('')
-  const [notice, setNotice] = useState('')
+  const toast = useToast()
   const [cancelOpen, setCancelOpen] = useState(false)
 
   const subscribe = async () => {
@@ -35,7 +36,7 @@ export default function Subscription() {
     try {
       const next = await subscriptionService.subscribe(period)
       setData(next)
-      setNotice('¡Bienvenido a Mutuals Plus! Te regalamos un escudo de bienvenida.')
+      toast.success('¡Bienvenido a Mutuals Plus! Te regalamos un escudo de bienvenida.')
       refreshUser().catch(() => {}) // rol PREMIUM y escudo nuevo
     } catch (err) {
       setActionError(getErrorMessage(err, 'No se pudo activar Plus'))
@@ -50,7 +51,7 @@ export default function Subscription() {
     try {
       setData(await subscriptionService.cancel())
       setCancelOpen(false)
-      setNotice('Cancelaste la renovación. Seguirás con Plus hasta la fecha de vencimiento.')
+      toast.success('Cancelaste la renovación. Seguirás con Plus hasta la fecha de vencimiento.')
     } catch (err) {
       setActionError(getErrorMessage(err, 'No se pudo cancelar'))
       setCancelOpen(false)
@@ -73,7 +74,6 @@ export default function Subscription() {
         <p className="subscription-page__subtitle">Más rachas, escudos todos los meses y tu Wrapped completo.</p>
       </header>
 
-      {notice && <p className="subscription-page__notice">{notice}</p>}
       <ErrorMessage message={actionError} />
 
       <Card className={`subscription-page__current ${isPlus ? 'is-plus' : ''}`}>

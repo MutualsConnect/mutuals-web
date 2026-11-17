@@ -15,6 +15,7 @@ import GiftShieldModal from '../../../wallet/components/GiftShieldModal'
 import ProfileAchievements from '../../../achievements/components/ProfileAchievements'
 import '../../components/UserPage.css'
 import Icon from '../../../../components/common/Icon'
+import { useToast } from '../../../../hooks/useToast'
 
 // /profile → mi perfil. /u/:username → perfil de otra persona (o el mío si es mi username).
 export default function Profile() {
@@ -29,7 +30,7 @@ export default function Profile() {
   )
   const [reportOpen, setReportOpen] = useState(false)
   const [giftOpen, setGiftOpen] = useState(false)
-  const [notice, setNotice] = useState('')
+  const toast = useToast()
 
   if (loading) return <Loader />
   if (error) {
@@ -90,7 +91,6 @@ export default function Profile() {
         )}
       </ProfileHeader>
 
-      {notice && <p className="user-page__notice">{notice}</p>}
 
       <ProfileAchievements userId={profile.id} isMe={isMe} />
 
@@ -103,7 +103,7 @@ export default function Profile() {
           friend={profile}
           onGifted={(wallet) => {
             setUser((u) => ({ ...u, gems: wallet.gems, shields: wallet.shields }))
-            setNotice(`Le regalaste un escudo a ${profile.displayName}.`)
+            toast.success(`Le regalaste un escudo a ${profile.displayName}.`)
           }}
         />
       )}

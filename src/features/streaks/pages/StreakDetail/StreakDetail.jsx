@@ -20,6 +20,7 @@ import FriendChallenge from '../../../challenges/components/FriendChallenge'
 import '../../components/StreakPage.css'
 import './StreakDetail.css'
 import Icon from '../../../../components/common/Icon'
+import { useToast } from '../../../../hooks/useToast'
 
 export default function StreakDetail() {
   const { streakId } = useParams()
@@ -33,7 +34,7 @@ export default function StreakDetail() {
   const [shieldOpen, setShieldOpen] = useState(false)
   const [arming, setArming] = useState(false)
   const [actionError, setActionError] = useState('')
-  const [notice, setNotice] = useState('')
+  const toast = useToast()
 
   const onArmShield = async () => {
     setArming(true)
@@ -41,7 +42,7 @@ export default function StreakDetail() {
     try {
       setData(await streakService.armShield(streakId))
       await refreshUser()
-      setNotice('Escudo activado: protegerá esta racha si un día no se ven.')
+      toast.success('Escudo activado: protegerá esta racha si un día no se ven.')
       setShieldOpen(false)
     } catch (err) {
       setActionError(getErrorMessage(err, 'No se pudo activar el escudo'))
@@ -91,7 +92,6 @@ export default function StreakDetail() {
       </Card>
 
       <ErrorMessage message={actionError} />
-      {notice && <p className="streak-detail__notice">{notice}</p>}
 
       {isActive && (
         <div className="streak-detail__actions">
@@ -145,7 +145,7 @@ export default function StreakDetail() {
         onClose={() => setInteractionOpen(false)}
         friend={streak.friend}
         onCreated={() =>
-          setNotice(`Interacción registrada. Falta que ${streak.friend.displayName} la confirme.`)
+          toast.success(`Interacción registrada. Falta que ${streak.friend.displayName} la confirme.`)
         }
       />
 

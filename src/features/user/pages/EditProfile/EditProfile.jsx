@@ -13,6 +13,7 @@ import ErrorMessage from '../../../../components/common/ErrorMessage'
 import Input from '../../../../components/common/Input'
 import Textarea from '../../../../components/common/Textarea'
 import '../../components/UserPage.css'
+import { useToast } from '../../../../hooks/useToast'
 
 function validateAvatarUrl(url) {
   if (!url) return null
@@ -22,6 +23,7 @@ function validateAvatarUrl(url) {
 }
 
 export default function EditProfile() {
+  const toast = useToast()
   const { user, setUser } = useAuth()
   const navigate = useNavigate()
 
@@ -55,6 +57,7 @@ export default function EditProfile() {
         avatarUrl: form.avatarUrl.trim() || null,
       })
       setUser(updated)
+      toast.success('Perfil actualizado.')
       navigate(ROUTES.PROFILE)
     } catch (err) {
       setErrors(getFieldErrors(err))
